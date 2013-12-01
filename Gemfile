@@ -45,7 +45,6 @@ end
 # gem 'debugger', group: [:development, :test]
 
 
-
 # add gems
 gem 'haml-rails'
 gem 'font-awesome-rails'
