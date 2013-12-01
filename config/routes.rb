@@ -2,7 +2,11 @@ Xxx::Application.routes.draw do
   
   root "home#index"
 
-
+  # omniauth
+  get '/auth/twitter', :as => :signin
+  get '/auth/:provider/callback' => 'sessions#callback'
+  get '/signout' => 'sessions#destroy', :as => :signout
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
