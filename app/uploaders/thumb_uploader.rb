@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class ThumbUploader < CarrierWave::Uploader::Base
 
   include Cloudinary::CarrierWave
