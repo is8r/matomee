@@ -56,8 +56,8 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'nokogiri'
 gem 'jquery-turbolinks'
-# gem 'carrierwave'
-# gem 'cloudinary'
+gem 'carrierwave'
+gem 'cloudinary'
 
 # add development gems
 group :development do
