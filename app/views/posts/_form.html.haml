@@ -17,9 +17,12 @@
     = f.text_area :url
   .field
     = f.label :thumb
-    -#= image_tag(@post.thumb_url(:thumbnail), :width => 80, :height => 80)
+    = image_tag(@post.thumb_url(:thumbnail), :width => 80, :height => 80)
+    %br
     = f.file_field :thumb
-    -#= f.check_box :remove_thumb
     = f.hidden_field :thumb_cache
+    %br
+    = f.check_box :remove_thumb
+    画像を削除
   .actions
     = f.submit 'Save'

@@ -13,7 +13,7 @@
   = @post.url
 %p
   %b Thumb:
-  -#= image_tag(@post.thumb_url(:thumbnail), :width => 80, :height => 80)
+  = image_tag(@post.thumb_url(:thumbnail), :width => 80, :height => 80)
 
 = link_to 'Edit', edit_post_path(@post)
 \|
