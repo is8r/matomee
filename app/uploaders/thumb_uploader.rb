@@ -16,7 +16,7 @@ class ThumbUploader < CarrierWave::Uploader::Base
   end
 
   def public_id
-    return User.id
+    return Post.id
   end
 
   # Include RMagick or MiniMagick support:
