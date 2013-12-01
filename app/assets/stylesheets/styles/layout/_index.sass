@@ -1,0 +1,93 @@
+//----------------------------------------------------------------------
+//layouts
+
+$total-columns: 14 // a 16-column grid
+$column-width: 60px // each column is 4em wide
+$gutter-width: 20px // 1em gutters between columns
+$grid-padding: $gutter-width // grid-padding equal to gutters
+
+html, body
+  position: relative
+  height: 100%
+
+body
+  .wrapper
+    +container
+    .header, .main, .footer
+      +c
+    
+    //grid
+    .main
+      .sidebar
+        +span-columns(6, 12)
+      .contents
+        +span-columns(6 omega, 12)
+        &.one
+          +span-columns(12, 12)
+    +at-breakpoint(8)
+      .main
+        .sidebar
+          +span-columns(3, 12)
+        .contents
+          +span-columns(9 omega, 12)
+          &.one
+            +span-columns(12, 12)
+    +at-breakpoint(12)
+      .main
+        .sidebar
+          +span-columns(3, 12)
+        .contents
+          +span-columns(9 omega, 12)
+          &.one
+            +span-columns(12, 12)
+    +at-breakpoint(14)
+      .main
+        .sidebar
+          +span-columns(3, 12)
+        .contents
+          +span-columns(9 omega, 12)
+          &.one
+            +span-columns(12, 12)
+
+//----------------------------------------------------------------------
+
+body
+  .wrapper
+    +container
+    
+    // debug color
+    .header
+      //background: #f2f2f2
+    .main
+      .sidebar
+        //background: #ddd
+      .contents
+        //background: #eee
+    .footer
+      //ackground: #f2f2f2
+    
+    //style
+    .header
+      h1
+        +font-learge
+        margin-top: 40px
+        margin-bottom: 40px
+        a
+          text-decoration: none
+          color: $color-def
+    .footer
+      .copyright
+        +font-small
+        margin-top: 40px
+        margin-bottom: 20px
+    .main
+      .twitter-icon
+        margin-left: -22px
+        img
+          +border-radius(20px)
+          width: 20px
+          height: auto
+
+
+
+

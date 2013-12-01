@@ -1,0 +1,27 @@
+.form
+  $border: 1px solid #ddd
+  border-top: $border
+  .field
+    $left: 80px
+    padding-top: 10px
+    padding-left: $left
+    padding-bottom: 8px
+    position: relative
+    border-bottom: $border
+    label
+      +font-normal(14px)
+      vertical-align: top
+      position: absolute
+      margin-left: -$left
+      width: $left - 10px
+    input,
+    textarea
+      border: $border
+      min-width: 170px
+  .actions
+    margin-top: 10px
+    margin-bottom: 20px
+    input
+      @extend .btn
+      @extend .btn-pink
+      min-width: 150px

@@ -1,0 +1,25 @@
+//----------------------------------------------------------------------
+
+//@extend %fade
+%fade
+  +transition-property(opacity)
+  +transition-duration(0.1s)
+  //+transition-timi ng-function(ease-out)
+  &:hover
+    +opacity(0.6)
+
+//@extend %blur
+%blur
+  +transition-property(filter)
+  +transition-duration(2s)
+  &:hover
+    -webkit-filter: blur(2px) invert(0.1)
+
+//@extend %blur-turn
+%blur-turn
+  -webkit-filter: blur(2px)
+  &:hover
+    +transition-property(filter)
+    +transition-duration(2s)
+    -webkit-filter: blur(0)
+

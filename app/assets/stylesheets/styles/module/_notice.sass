@@ -1,0 +1,19 @@
+p#notice
+  $c: #f2f2f2
+  position: fixed
+  background: rgba($c, 0.9)
+  border: 1px solid $c - 20
+  +border-radius(2px)
+  padding: 20px
+  width: 100px
+  +font-normal(12px)
+  right: 10px
+
+  top: -100px
+  +transition(top, 1s)
+  
+  &.show
+    top: 10px
+
+  &.hide
+    top: -100px

@@ -1,0 +1,83 @@
+// //----------------------------------------------------------------------
+
+//+button($color-blue) -> ok
+//+button($color-gray-light) -> ok
+=button($c: rgb(33,114,90), $ctext: #fff)
+  //+sassy-button("simple", 4px, 12px, #4ba3cc) 
+  padding: 11px 30px 10px 30px
+  background: $c
+  +background-image(linear-gradient($c + 20, $c - 20))
+  +border-radius(4px)
+  +box-shadow(rgba(black, 0.1) 0px 1px 2px)
+  border: 1px solid rgba($c + 20, 0.2)
+  text-align: center
+  color: $ctext
+  font-size: 14px
+  text-decoration: none
+  &:hover
+    background: $c + 20
+    +background-image(linear-gradient($c + 40, $c + 20))
+  &:active
+    background: $c - 20
+    +background-image(linear-gradient($c + 10, $c - 10))
+    +box-shadow(rgba(black, 0.2) 2px 1px 5px inset)
+
+
+=button-bright($c: rgb(33,114,90), $ctext: #fff)
+  padding: 11px 30px 10px 30px
+  background: $c
+  +background-image(linear-gradient($c + 5, $c - 10))
+  +border-radius(4px)
+  +box-shadow(rgba(black, 0.1) -1px 1px 2px)
+  border: 1px solid rgba($c + 5, 0.4)
+  text-align: center
+  color: $ctext
+  font-size: 14px
+  text-decoration: none
+  &:hover
+    background: $c + 5
+    +background-image(linear-gradient($c + 5, $c + 5))
+  &:active
+    background: $c - 5
+    +background-image(linear-gradient($c + 10, $c - 10))
+
+=button_blue
+  +button($color-blue)
+
+=button_red
+  +button($color-pink)
+
+=button_green
+  +button($color-green)
+
+=button_gray
+  +button-bright($color-gray, $color-gray-dark)
+
+=button_small_blue_light
+  +button($color-blue + 10)
+  padding: 5px 30px 3px 30px !important
+  font-size: 12px !important
+
+=button_small_blue
+  +button($color-blue)
+  padding: 5px 30px 3px 30px !important
+  font-size: 12px !important
+
+=button_small_red
+  +button($color-pink)
+  padding: 5px 30px 3px 30px !important
+  font-size: 12px !important
+
+=button_small_gray
+  +button-bright($color-gray-light - 5, $color-gray-dark)
+  padding: 5px 30px 3px 30px !important
+  font-size: 12px !important
+
+=button_blue_lighter
+  +button($color-blueyellow)
+
+=button_small_blue_lighter
+  +button($color-blueyellow)
+  padding: 5px 30px 3px 30px !important
+  font-size: 12px !important
+

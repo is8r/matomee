@@ -1,0 +1,28 @@
+//----------------------------------------------------------------------
+
+// centering layout
+
+$iphone-margin: 10px
+
+//iphoneで横100%の時は$fitをtrueに
+=wrap($n, $fit: false)
+  width: 100%
+  margin: 0
+  padding: 0
+  text-align: center
+  min-width: $n
+  > .wrap-inner
+    position: relative
+    display: block
+    width: $n
+    margin: 0 auto
+    text-align: left
+  @media screen and (max-width: 480px)
+    width: auto
+    > .wrap-inner
+      width: auto
+      @if $fit
+        margin-left: -$iphone-margin
+      padding-left: $iphone-margin
+      padding-right: $iphone-margin
+

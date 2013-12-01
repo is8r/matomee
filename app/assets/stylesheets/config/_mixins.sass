@@ -1,0 +1,17 @@
+//----------------------------------------------------------------------
+
+//+fa("\f105", 12px, 10px)
+=fa($icon: "\f105", $size: 12px, $left: 10px)
+  position: relative
+  &:before
+    display: inline-block
+    font-family: FontAwesome
+    font-style: normal
+    font-weight: normal
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    content: $icon
+    position: absolute
+    font-size: $size
+    left: $left
+

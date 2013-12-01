@@ -1,0 +1,79 @@
+.btn
+  +inline-block
+  padding: 10px 20px 10px 20px
+  text-decoration: none
+  text-align: center
+  font-size: 14px !important
+  min-width: 10px
+  position: relative
+  &.btn-use-disable
+    &.btn-use-disable-active
+      cursor: default
+      pointer-events: none
+      +opacity(0.3)
+
+  &.btn-pink
+    +border-radius(2px)
+    background-color: $color-accent
+    color: #fff !important
+    &:hover
+      background-color: $color-accent - 30
+  
+  &.btn-black
+    +border-radius(2px)
+    background-color: #222
+    color: #fff !important
+    &:hover
+      background-color: #222 - 30
+  
+  &.btn-white
+    +border-radius(2px)
+    border: 1px solid $color-def
+    color: $color-def
+    &:hover
+      background-color: $color-def
+      color: #fff
+
+  &.btn-white-pink
+    +border-radius(2px)
+    border: 1px solid $color-accent
+    &:hover
+      background-color: $color-accent
+      color: #fff
+
+  &.btn-gray
+    +border-radius(2px)
+    background-color: #f2f2f2
+    color: $color-def
+    &:hover
+      background-color: #f2f2f2 - 30
+
+  &.btn-arrow
+    position: relative
+    padding-left: 28px
+    +fa("\f105")
+
+  &.btn-square
+    padding: 10px !important
+
+  &.btn-learge
+    padding: 14px 30px 14px 30px
+
+// input not works :befour
+input
+  &.btn
+    +form-reset(white)
+    padding: 10px 20px 10px 20px
+    &:hover
+      cursor: pointer
+      +background-image(linear-gradient($color-def, $color-def))
+    &.btn-pink
+      +border-radius(2px)
+      +background-image(linear-gradient($color-accent, $color-accent))
+      color: #fff
+      &:hover
+        +background-image(linear-gradient($color-accent - 30, $color-accent - 30))
+
+
+
+

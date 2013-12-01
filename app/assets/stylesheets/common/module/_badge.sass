@@ -1,0 +1,23 @@
+//----------------------------------------------------------------------
+
+=badge($color: #222, $l: -30px, $t: 10px)
+  position: absolute
+  z-index: 10
+  left: -30px
+  top: 10px
+  .badge-inner
+    color: #fff
+    background: $color
+    display: block
+    text-align: center
+    padding: 3px 0 1px
+    line-height: 12px
+    +rotate(-45deg)
+    width: 100px
+    +box-shadow(rgba(0,0,0,0.1) 0 1px 1px)
+    font-size: 10px
+  &.right
+    left: 42px
+    .badge-inner
+      +rotate(45deg)
+

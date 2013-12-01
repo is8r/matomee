@@ -1,0 +1,151 @@
+.body
+
+  width: 100%
+  text-align: left
+
+  h1,h1 a,
+  h2,h2 a,
+  h3,h3 a,
+  h4,h4 a,
+  h5,h5 a
+    +font-normal
+    color: $color-def
+    font-weight: normal
+
+  h1,h1 a
+    margin-bottom: 20px
+    font
+      size: 22px
+
+  h2,h2 a
+    margin-bottom: 20px
+    font:
+      size: 40px
+
+  h3,h3 a
+    margin-bottom: 24px
+    
+  h4,h4 a
+    margin-bottom: 20px
+    font:
+      size: 20px
+
+  h5,h5 a
+    margin-bottom: 16px
+    font:
+      size: 24px
+      weight: normal
+
+  dl, ul, p
+    font-size: 17px
+    color: $color-def
+  
+  p
+    margin-bottom: 20px
+
+  a
+    font-size: 17px
+    line-height: 1.0em
+    color: $color-accent
+    &:hover
+      color: $color-accent - 30
+  
+  img
+    margin: 0
+    padding: 0
+    line-height: 0
+    border: none
+
+  table
+    width: 100%
+    border-collapse: collapse
+    th
+      border: 1px solid #eee
+      padding: 5px 10px 5px 10px
+      +font-small
+    td
+      border: 1px solid #eee
+      padding: 5px 10px 5px 10px
+      +font-normal(14px)
+    thead
+    tbody
+
+  .imgset
+    $ml: 0px
+    position: relative
+    width: auto !important
+    margin-left: 0 !important
+    img
+      float: none !important
+      width: 100% !important
+      border: none !important
+    p
+      float: none !important
+      width: 100% !important
+  
+  .gist
+    $ml: 0px
+    width: auto !important
+    margin-left: -$ml !important
+    margin-top: 50px
+    margin-bottom: 50px
+    .gist-file
+      border: none
+      .gist-data
+        border-bottom: none
+        .file-data
+          background: #f8f8f8
+          .line-numbers,
+          .line-pre
+            font-size: 13px
+          .line-numbers
+            border-right: none
+          .line-pre
+            font-family: Consolas, "Liberation Mono", Courier, monospace
+            color: #333
+    .gist-meta
+      background: #f2f2f2
+    .gist-meta, .gist-meta a
+      font-size: 12px
+      font-weight: normal
+      text-shadow: 1px 1px rgba(255,255,255,0)
+  
+  pre
+    > code
+      width: auto !important
+      padding: 20px
+      margin-top: 50px
+      margin-bottom: 50px
+      display: block
+      line-height: 1.4em
+      background: #f8f8f8
+      font-family: Consolas, 'Liberation Mono', Courier, monospace
+      font-size: 13px
+      overflow: auto
+      p
+        font-family: Consolas, 'Liberation Mono', Courier, monospace
+        font-size: 13px
+  
+  blockquote
+    $ml: 10px
+    border-left: 4px solid #ddd
+    width: auto !important
+    margin-top: 50px
+    margin-bottom: 50px
+    margin-left: -20px !important
+    padding-left: 20px !important
+    text-align: left !important
+    cite
+      margin-top: 0
+      p, a
+        display: block
+        font-weight: normal
+        font-style: italic
+    p
+      font-size: 19px
+      font-weight: bold
+      font-style: italic
+      margin-bottom: 10px
+      text-align: left !important
+
+

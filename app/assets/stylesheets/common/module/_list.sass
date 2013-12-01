@@ -1,0 +1,29 @@
+//----------------------------------------------------------------------
+// dl
+
+=list($leftmargin:160px, $c:#ccc)
+  $border:  1px $c dotted
+  position: relative
+  baseline: top
+  border-top: $border
+  min-height: 1px
+  _height: 1%
+  overflow: hidden
+  dt
+    clear: both
+    baseline: top
+    float: left
+    padding: 10px 0 10px 0
+    width: $leftmargin
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    font-weight: bold
+  dd
+    position: relative
+    baseline: top
+    padding: 10px 0 10px 0
+    padding-left: $leftmargin + 20px
+    border-bottom: $border
+
+

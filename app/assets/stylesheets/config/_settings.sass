@@ -1,0 +1,54 @@
+//----------------------------------------------------------------------
+// site property
+
+$color-def: #222
+$color-accent: #d36879
+
+$color-selection: #dedede
+$color-background: #f8f8f8
++selection($color-selection, $color-background)
+
+//----------------------------------------------------------------------
+// font
+
+// +font-serif
+@mixin font-serif
+  font-family: 'ヒラギノ明朝 Pro W6','Hiragino Mincho Pro','HGS明朝E','ＭＳ Ｐ明朝',serif
+  
+// +font-sans
+@mixin font-sans
+  font-family: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif
+
+// +font-opensans
+@import url('//fonts.googleapis.com/css?family=Open+Sans:400,300,700')
+@mixin font-opensans
+  font-family: 'Open Sans', sans-serif
+
+//+font-normal
+=font-normal($size: 17px)
+  +font-sans 
+  text-decoration: none
+  font-family: "Open Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif
+  font-style: normal
+  font-variant: normal
+  font-weight: normal
+  color: $color-def
+  font:
+    size: $size
+  a
+    font:
+      size: $size
+
+//+font-learge
+=font-learge
+  +font-normal(22px)
+
+//+font-midium
+=font-midium
+  +font-normal(17px)
+
+//+font-small
+=font-small
+  +font-normal(10px)
+
+

@@ -1,0 +1,24 @@
+.scaffold
+  
+  // index
+  form
+    @extend .form
+
+  // scaffold-show
+  &.scaffold-show
+    $border: 1px solid #ddd
+    $left: 80px
+    p
+      padding-left: $left
+      padding-bottom: 8px
+      position: relative
+      border-bottom: $border
+      min-height: 20px
+      +font-normal(14px)
+      margin-bottom: 10px
+      b
+        position: absolute
+        +font-normal(14px)
+        vertical-align: top
+        margin-left: -$left
+        width: $left - 10px

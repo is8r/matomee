@@ -10,7 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+// hamlで指定 require jquery
 //= require jquery_ujs
+//= require jquery.turbolinks
+//= require_tree ./common/
+//= require_tree ./app/
 //= require turbolinks
-//= require_tree .
