@@ -7,6 +7,7 @@
     %th Title
     %th Description
     %th Url
+    %th Thumb
     %th
     %th
     %th
@@ -16,6 +17,8 @@
       %td= post.title
       %td= post.description
       %td= post.url
+      %td= image_tag(post.thumb_url(:thumbnail), :width => 80, :height => 80)
+
       %td= link_to 'Show', post
       %td= link_to 'Edit', edit_post_path(post)
       %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
