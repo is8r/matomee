@@ -7,6 +7,7 @@ app_description: 'app_description'
 app_keyword: 'app_keyword'
 
 # twitter
+# Settings.twitter_consumer_key, Settings.twitter_consumer_secret
 twitter_consumer_key: 'HoVXZinoHPmvO30ItQx8jg'
 twitter_consumer_secret: 'HvAeUcpotCwgnRSlzaSXc2gRfxNjOgM4VrXY2cF94Qo'
 
