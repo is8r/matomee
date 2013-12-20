@@ -1,20 +1,9 @@
-angular.module('Blog', [])
-  .factory('postData', ['$http', ($http) ->
-    postData =
-      data:
-        posts: [{title: 'Loading', contents: ''}]
-      isLoaded: false
+angular.module('Posts', ['ngResource']).factory('postData', ['$http', ($http) ->
 
-    postData.loadPosts = ->
-      if !postData.isLoaded
-        $http.get('./posts.json').success( (data) ->
-          postData.data.posts = data
-          postData.isLoaded = true
-          console.log('Successfully loaded posts.')
-        ).error( ->
-          console.error('Failed to load posts.')
-        )
+  postData = {title: 'My first post', contents: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet lobortis vulputate. Ut tempus, orci eu tempor sagittis, mauris orci ultrices arcu, in volutpat elit elit semper turpis. Maecenas id lorem quis magna lacinia tincidunt. In libero magna, pharetra in hendrerit vitae, luctus ac sem. Nulla velit augue, vestibulum a egestas et, imperdiet a lacus. Nam mi est, vulputate eu sollicitudin sed, convallis vel turpis. Cras interdum egestas turpis, ut vestibulum est placerat a. Proin quam tellus, cursus et aliquet ut, adipiscing id lacus. Aenean iaculis nulla justo.'}
 
-    return postData
+  console.log("Initialized postData.")
 
+  return {
+    title: 'My first post', contents: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet lobortis vulputate. Ut tempus, orci eu tempor sagittis, mauris orci ultrices arcu, in volutpat elit elit semper turpis. Maecenas id lorem quis magna lacinia tincidunt. In libero magna, pharetra in hendrerit vitae, luctus ac sem. Nulla velit augue, vestibulum a egestas et, imperdiet a lacus. Nam mi est, vulputate eu sollicitudin sed, convallis vel turpis. Cras interdum egestas turpis, ut vestibulum est placerat a. Proin quam tellus, cursus et aliquet ut, adipiscing id lacus. Aenean iaculis nulla justo.'}
 ])

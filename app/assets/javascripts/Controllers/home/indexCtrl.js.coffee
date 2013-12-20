@@ -1,5 +1,7 @@
 @IndexCtrl = ($scope, $location, $http) ->
   
+  # $scope.data = postData
+
   # befour load
   $scope.data = 
     posts: [{title: 'Now Loading', contents: 'Loading posts...'}]
@@ -16,3 +18,8 @@
   # func
   $scope.viewPost = (postId) ->
     $location.url('/post/'+postId)
+  
+  $scope.createPost = () ->
+    $location.url('/post/new')
+
+# @IndexCtrl.$inject = ['$scope', '$location', '$http']

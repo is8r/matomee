@@ -1,7 +1,12 @@
-<h1 class="text-center">My blog</h1>
+
+
+<a ng-click="createPost()">New Post</a>
+
+<h1>My blog</h1>
 <div class="row" ng-repeat="post in data.posts">
   <h2><a ng-click="viewPost(post.id)">{{post.title}}</a></h2>
   <p>{{post.contents}}</p>
   <p>{{post.description}}</p>
   <p>{{post.created_at}}</p>
+  <div ng-model="title"></div>
 </div>

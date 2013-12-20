@@ -1,17 +1,9 @@
 %p#notice= notice
 
-/ %div{"ng-controller" => "IndexCtrl"}
-/   %h1
-/     {{ title }}
-/   %div{"ng-repeat" => "post in data.posts"}
-/     %h3
-/       {{ post.title }}
-/     / %p
-/     /   {{ post.contents }}
-
 %div{'ng-view' => ''}
 
-%br
+%hr
+%hr
 
 %p
   Find me in app/views/home/index.html.haml
@@ -21,12 +13,6 @@
 
 = link_to posts_path, {class: 'btn btn-white'} do
   posts_path
-
-/ = link_to scaffoldtests_path, {class: 'btn btn-white'} do
-/   scaffoldtests_path
-
-%br
-%br
 
 - if current_user
   = link_to signout_path, {class: 'btn btn-white'} do
