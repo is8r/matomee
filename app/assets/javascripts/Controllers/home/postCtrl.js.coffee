@@ -1,16 +1,17 @@
 @PostCtrl = ($scope, $http, $routeParams) ->
 
   # befour load
+  $scope.data = {title: 'Now Loading', contents: 'Loading posts...'}
+
+  # prop
   $scope.postId = $routeParams.postId
   $scope.postJson = '/posts/'+$routeParams.postId+'.json'
 
   # load
-  loadPosts = ->
+  $scope.loadPosts = (postId) ->
     $http.get($scope.postJson).success( (data) ->
-      # console.log 'sucess'
       $scope.data = data
     ).error( ->
-      # console.log 'error'
     )
-  loadPosts()
+  $scope.loadPosts()
 
