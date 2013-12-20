@@ -1,13 +1,17 @@
 %p#notice= notice
 
-%div{"ng-controller" => "IndexCtrl"}
-  %h1
-    {{ title }}
-  %div{"ng-repeat" => "post in data.posts"}
-    %h3
-      {{ post.title }}
-    %p
-      {{ post.contents }}
+/ %div{"ng-controller" => "IndexCtrl"}
+/   %h1
+/     {{ title }}
+/   %div{"ng-repeat" => "post in data.posts"}
+/     %h3
+/       {{ post.title }}
+/     / %p
+/     /   {{ post.contents }}
+
+%div{'ng-view' => ''}
+
+%br
 
 %p
   Find me in app/views/home/index.html.haml
