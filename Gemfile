@@ -58,6 +58,7 @@ gem 'nokogiri'
 gem 'jquery-turbolinks'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'angularjs-rails'
 
 # add development gems
 group :development do

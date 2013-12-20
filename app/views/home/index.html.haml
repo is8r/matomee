@@ -1,7 +1,9 @@
 %p#notice= notice
 
-%h1
-  Home#index
+%div{"ng-controller" => "IndexCtrl"}
+  %h1
+    Home#index
+    {{ title }}
 %p
   Find me in app/views/home/index.html.haml
 
@@ -32,4 +34,3 @@
     %i.fa.fa-twitter
     login
     -#<a href="/some_action" class="some-action" data-remote="true" data-method="post">some action</a>
-

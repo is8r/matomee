@@ -13,6 +13,9 @@
 // hamlで指定 require jquery
 //= require jquery_ujs
 //= require jquery.turbolinks
+//= require angular
+
 //= require_tree ./common/
 //= require_tree ./app/
+//= require_tree ./ng/
 //= require turbolinks
