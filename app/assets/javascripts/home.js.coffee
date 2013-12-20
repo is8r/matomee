@@ -8,8 +8,7 @@ Blog.config(['$routeProvider', ($routeProvider) ->
   # Route for '/post'
   $routeProvider.when('/post/:postId', { templateUrl: '../assets/homePost.html', controller: 'PostCtrl' } )
 
-  # # Default
+  # Default
   $routeProvider.otherwise({ templateUrl: '../assets/homeIndex.html', controller: 'IndexCtrl' } )
 
 ])
-
