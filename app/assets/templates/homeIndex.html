@@ -2,4 +2,6 @@
 <div class="row" ng-repeat="post in data.posts">
     <h2><a ng-click="viewPost($index)">{{post.title}}</a></h2>
     <p>{{post.contents}}</p>
+    <p>{{post.description}}</p>
+    <p>{{post.created_at}}</p>
 </div>
