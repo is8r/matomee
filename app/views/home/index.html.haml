@@ -2,8 +2,13 @@
 
 %div{"ng-controller" => "IndexCtrl"}
   %h1
-    Home#index
     {{ title }}
+  %div{"ng-repeat" => "post in data.posts"}
+    %h3
+      {{ post.title }}
+    %p
+      {{ post.contents }}
+
 %p
   Find me in app/views/home/index.html.haml
 

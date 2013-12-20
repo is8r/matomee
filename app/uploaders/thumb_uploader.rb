@@ -13,9 +13,9 @@ class ThumbUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [50, 50]
   end
 
-  def public_id
-    return Post.id
-  end
+  # def public_id
+  #   return Post.id
+  # end
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
