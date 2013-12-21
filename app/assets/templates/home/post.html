@@ -1,4 +1,5 @@
-<h1>{{postId}} - {{data.title}}</h1>
-<div class="row">
-  <p>{{data.contents}}</p>
-</div>
+<h1>{{data.postId }} - {{data.postData.posts[data.postId].title }}</h1>
+<p>{{data.postData.posts[data.postId].contents}}</p>
+<p>{{data.postData.posts[data.postId].description}}</p>
+<p>{{data.postData.posts[data.postId].created_at}}</p>
+<p>{{data.postData.posts[data.postId].url }}</p>

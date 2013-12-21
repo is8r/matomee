@@ -1,17 +1,12 @@
-@PostCtrl = ($scope, $http, $routeParams) ->
+@PostCtrl = ($scope, $routeParams, postData) ->
 
-  # befour load
-  $scope.data = {title: 'Now Loading', contents: 'Loading posts...'}
+  $scope.data =
+    postData: postData.data
 
-  # prop
-  $scope.postId = $routeParams.postId
-  $scope.postJson = '/posts/'+$routeParams.postId+'.json'
+  postData.loadPosts()
 
-  # load
-  $scope.loadPosts = (postId) ->
-    $http.get($scope.postJson).success( (data) ->
-      $scope.data = data
-    ).error( ->
-    )
-  $scope.loadPosts()
+  $scope.data.postId = $routeParams.postId
+  $scope.data.postJson = '/posts/'+$routeParams.postId+'.json'
+
+@PostCtrl.$inject = ['$scope', '$routeParams', 'postData']
 

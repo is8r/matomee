@@ -1,18 +1,9 @@
-@IndexCtrl = ($scope, $location, $http) ->
+@IndexCtrl = ($scope, $location, $http, postData) ->
   
   # $scope.data = postData
 
-  # befour load
-  $scope.data = 
-    posts: [{title: 'Now Loading', contents: 'Loading posts...'}]
-
-  # loadPosts
-  $scope.loadPosts = (postId) ->
-    $http.get('./posts.json').success( (data) ->
-      $scope.data.posts = data
-    ).error( ->
-    )
-  $scope.loadPosts()
+  $scope.data = postData.data
+  postData.loadPosts()
 
   # --------------------------------------------------
   # func
@@ -22,4 +13,4 @@
   $scope.createPost = () ->
     $location.url('/post/new')
 
-# @IndexCtrl.$inject = ['$scope', '$location', '$http']
+@IndexCtrl.$inject = ['$scope', '$location', '$http', 'postData']
