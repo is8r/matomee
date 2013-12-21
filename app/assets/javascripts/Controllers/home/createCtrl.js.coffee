@@ -1,16 +1,26 @@
-@CreatePostCtrl = ($scope, $location, postData) ->
+@CreateCtrl = ($scope, $location, postData) ->
 
   $scope.data = postData.data
   postData.loadPosts()
 
   $scope.formData =
-    newPostTitle: ''
-    newPostContents: ''
+    title: ''
+    description: ''
+    url: ''
 
   $scope.navNewPost = ->
     $location.url('/post/new')
 
   $scope.navHome = ->
     $location.url('/')
+   
+  $scope.createPost = ->
+    # console.log($scope.formData)
+    postData.createPost($scope.formData)
 
-@CreatePostCtrl.$inject = ['$scope', '$location', 'postData']
+  $scope.clearPost = ->
+    $scope.formData.title = ''
+    $scope.formData.description = ''
+    $scope.formData.url = ''
+
+@CreateCtrl.$inject = ['$scope', '$location', 'postData']

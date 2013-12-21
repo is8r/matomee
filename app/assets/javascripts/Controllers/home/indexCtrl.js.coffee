@@ -14,3 +14,5 @@
     $location.url('/post/new')
 
 @IndexCtrl.$inject = ['$scope', '$location', '$http', 'postData']
+
+
