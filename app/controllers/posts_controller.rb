@@ -6,12 +6,24 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all.order('posted_at DESC').page params[:page]
-    # @entries = Entry.order('created_at DESC').page params[:page]
-    # @entries = Entry.order('created_at DESC').page(params[:page]).per(5)
+
+    # jsonに情報を追加
+    @posts_json = []
+    @posts.each do |i|
+      site = Site.where(id: i.site_id).first
+      
+      post = {}
+      post[:title] = i.title
+      post[:url] = i.url
+      post[:description] = i.description
+      post[:site] = site.name
+      post[:time] = ApplicationController.helpers.foo_time(i.posted_at)
+      @posts_json.push post
+    end
 
     respond_with(@posts) do |format|
       format.html { render :html => @post }
-      format.json { render :json => @posts.as_json }
+      format.json { render :json => @posts_json.as_json }
     end
   end
 
