@@ -11,8 +11,8 @@ class PostsController < ApplicationController
     @posts_json = []
     @posts.each do |i|
       site = Site.where(id: i.site_id).first
-      
       post = {}
+      post[:id] = i.id
       post[:title] = i.title
       post[:url] = i.url
       post[:description] = i.description

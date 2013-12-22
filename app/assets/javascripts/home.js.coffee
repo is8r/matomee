@@ -31,7 +31,9 @@ Posts.factory('postData', ['$http', ($http) ->
       posts: [{
         title: '',
         description: '',
-        url: ''
+        url: '',
+        site: '',
+        time: ''
         }]
     isLoaded: false
 
@@ -68,14 +70,11 @@ Posts.factory('postData', ['$http', ($http) ->
     # Do POST request to /posts.json
     $http.post('/posts.json', data).success( (data) ->
       console.log('Successfully created post.')
-
       # Add new post to array of posts
       postData.data.posts.push(data)
-
     ).error( ->
       console.error('Failed to create new post.')
     )
-
     return true
 
   return postData
