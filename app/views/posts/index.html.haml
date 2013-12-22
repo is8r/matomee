@@ -2,6 +2,9 @@
 
 %h1 Listing posts
 
+= paginate @posts
+
+
 %table
   %tr
     %th Site
@@ -29,4 +32,7 @@
 
 %br
 
-= link_to 'New Post', new_post_path
+%hr
+
+= link_to new_post_path, {class: 'btn btn-white'} do
+  'New Post'

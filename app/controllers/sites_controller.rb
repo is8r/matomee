@@ -16,6 +16,10 @@ class SitesController < ApplicationController
     end
 
     # @debug = scrape 'http://workingnews.blog117.fc2.com/?xml'
+    respond_to do |format|
+      format.html { render :html => @sites }
+      format.json { render :json => @sites.as_json }
+    end
   end
 
   # GET /sites/1

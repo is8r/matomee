@@ -5,7 +5,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.order('posted_at DESC').page params[:page]
+    # @entries = Entry.order('created_at DESC').page params[:page]
+    # @entries = Entry.order('created_at DESC').page(params[:page]).per(5)
 
     respond_with(@posts) do |format|
       format.html { render :html => @post }
