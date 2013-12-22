@@ -1,11 +1,8 @@
-<a ng-click="createPost()">New Post</a>
+<a ng-click="createPost()" class="btn btn-white">New Post</a>
 
 <hr />
-<h1>My blog</h1>
 <div class="row" ng-repeat="post in data.posts">
-  <!-- <h2><a ng-click="viewPost($index)">{{post.title}}</a></h2> -->
-  <h2><a ng-click="viewPost(post.id)">{{post.title}}</a></h2>
-  <p>{{post.description}}</p>
+  <a ng-click="viewPost(post.id)">{{post.title}}</a>
   <p>{{post.created_at}}</p>
 </div>
 

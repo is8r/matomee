@@ -4,13 +4,18 @@ class SitesController < ApplicationController
   require 'date'
   require 'nokogiri'
   require 'open-uri'
+  require 'time'
 
   # GET /sites
   # GET /sites.json
   def index
-    @sites = Site.all
+    @sites = Site.all.order(:created_at)
 
-    @debug = scrape 'http://blog.livedoor.jp/nwknews/index.rdf'
+    @sites.each do |i|
+      scrape i.rss
+    end
+
+    # @debug = scrape 'http://workingnews.blog117.fc2.com/?xml'
   end
 
   # GET /sites/1
@@ -92,12 +97,13 @@ class SitesController < ApplicationController
         post.title = i.search('title').text
         post.url = i.search('link').text
         post.description = i.search('description').text
+        post.posted_at = Time.parse(i.xpath('dc:date').text)
         post.site_id = get_site_id_rss(uri)
 
         # save
         add_db_create_or_update(post)
 
-        re = post[:site_id]
+        # re = post
       end
 
       re
@@ -106,9 +112,11 @@ class SitesController < ApplicationController
     # helper?
     def get_site_id_rss(rss)
       site = Site.where(rss: rss).first
+      re = 0
       unless site.blank?
-        site.id
+        re = site.id
       end
+      re
     end
 
     # model?
@@ -116,9 +124,13 @@ class SitesController < ApplicationController
       posts = Post.where(:url => post.url).first
       if posts.blank?
         post.save
-      end
-      if posts.site_id.blank? || post.site_id < 0
-        posts.update_attribute(:site_id, post.site_id)
+      else
+        if posts.site_id.blank? || post.site_id < 1
+          posts.update_attribute(:site_id, post.site_id)
+        end
+        if posts.posted_at.blank? || post.posted_at
+          posts.update_attribute(:posted_at, post.posted_at)
+        end
       end
     end
 

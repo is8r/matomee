@@ -6,6 +6,7 @@
   %tr
     %th Site
     %th Title
+    %th Posted_at
     %th Description
     %th Url
     %th Thumb
@@ -17,6 +18,7 @@
     %tr
       %td= link_to_site_id post.site_id
       %td= post.title
+      %td= post.posted_at
       %td= post.description
       %td= post.url
       %td= image_tag(post.thumb_url(:thumbnail), :width => 80, :height => 80)
