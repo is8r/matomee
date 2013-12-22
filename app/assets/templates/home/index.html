@@ -1,9 +1,31 @@
-<ul>
+
+<div class="pager" ng-class="{disabled: maxPage == 0}">
+  <ul>
+    <li ng-class="{disabled: currentPage == 0}">
+      <a href ng-click="prevPage()" class="btn btn-white btn-square">«</a>
+    </li>
+    <li ng-repeat="i in pages">
+      <a href="#" class="btn btn-white btn-square" ng-class="{'btn-current': i == currentPage}">{{i+1}}</a>
+    </li>
+    <li ng-class="{disabled: currentPage == maxPage - 1}">
+      <a href ng-click="nextPage()" class="btn btn-white btn-square">»</a>
+    </li>
+  </ul>
+</div>
+
+<div class="mt20"></div>
+<h1>list title {{currentPage+1}} / {{maxPage}} ({{itemSize}})</h1>
+<ul class="list">
   <li ng-repeat="post in data.posts">
-    <span ng-hide="{{isLoaderHidden}}"><i class="fa fa-spinner fa-spin"></i></span>
+    <span ng-hide="{{isLoaderHidden}}" class="loader"><i class="fa fa-spinner fa-spin"></i></span>
     <span ng-hide="{{!isLoaderHidden}}">
-      <a href="{{post.url}}" target="_blank">{{post.title}} {{post.site}}</a>
-      <a ng-click="viewPost(post.id)">{{post.time}}</a>
+      <a href="{{post.url}}" target="_blank">
+        <span class="view">0</span>
+        {{post.title}}
+        <div class="info">
+          <span class="date">{{post.time}}</span> <span class="site">[{{post.site}}]</span>
+        </div>
+      </a>
     </span>
   </li>
 </ul>

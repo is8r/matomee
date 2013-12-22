@@ -12,6 +12,15 @@ class PostsController < ApplicationController
 
     # jsonに情報を追加
     @posts_json = []
+
+    # 
+    info = {}
+    info[:all] = Post.all.count
+    info[:now] = params[:page]
+    @posts_json.push info
+
+    # 
+    posts = []
     @posts.each do |i|
       site = Site.where(id: i.site_id).first
       post = {}
@@ -21,8 +30,9 @@ class PostsController < ApplicationController
       post[:description] = i.description
       post[:site] = site.name
       post[:time] = ApplicationController.helpers.foo_time(i.posted_at)
-      @posts_json.push post
+      posts.push post
     end
+    @posts_json.push posts
 
     respond_with(@posts) do |format|
       format.html { render :html => @post }

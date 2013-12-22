@@ -43,7 +43,8 @@ Posts.factory('postData', ['$http', ($http) ->
   postData.loadPosts = (deferred) ->
     if !postData.isLoaded
       $http.get('/posts.json').success( (data) ->
-        postData.data.posts = data
+        postData.data.posts = data[1]
+        postData.data.info = data[0]
         postData.isLoaded = true
         console.log('Successfully loaded posts.')
         if deferred
@@ -57,28 +58,26 @@ Posts.factory('postData', ['$http', ($http) ->
       if deferred
         deferred.resolve()
 
-  postData.createPost = (newPost) ->
-    # Client-side data validation
-    if newPost.title == '' or newPost.description == '' or newPost.url == ''
-      alert('Neither the Title nor the Body are allowed to be left blank.')
-      return false
-
-    # Create data object to POST
-    data =
-      new_post:
-        title: newPost.title
-        description: newPost.description
-        url: newPost.url
-
-    # Do POST request to /posts.json
-    $http.post('/posts.json', data).success( (data) ->
-      console.log('Successfully created post.')
-      # Add new post to array of posts
-      postData.data.posts.push(data)
-    ).error( ->
-      console.error('Failed to create new post.')
-    )
-    return true
+  # postData.createPost = (newPost) ->
+  #   # Client-side data validation
+  #   if newPost.title == '' or newPost.description == '' or newPost.url == ''
+  #     alert('Neither the Title nor the Body are allowed to be left blank.')
+  #     return false
+  #   # Create data object to POST
+  #   data =
+  #     new_post:
+  #       title: newPost.title
+  #       description: newPost.description
+  #       url: newPost.url
+  #   # Do POST request to /posts.json
+  #   $http.post('/posts.json', data).success( (data) ->
+  #     console.log('Successfully created post.')
+  #     # Add new post to array of posts
+  #     postData.data.posts.push(data)
+  #   ).error( ->
+  #     console.error('Failed to create new post.')
+  #   )
+  #   return true
 
   return postData
 ])
