@@ -7,6 +7,9 @@
           %li= msg
 
   .field
+    = f.label :site_id
+    = f.collection_select :site_id, Site.all, :id, :name
+  .field
     = f.label :title
     = f.text_area :title
   .field

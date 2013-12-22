@@ -4,6 +4,7 @@
 
 %table
   %tr
+    %th Site
     %th Title
     %th Description
     %th Url
@@ -14,6 +15,7 @@
 
   - @posts.each do |post|
     %tr
+      %td= link_to_site_id post.site_id
       %td= post.title
       %td= post.description
       %td= post.url
