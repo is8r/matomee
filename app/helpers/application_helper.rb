@@ -1,4 +1,7 @@
 module ApplicationHelper
+  def foo_time(datetime)
+    time_ago_in_words(datetime) + '前'
+  end
 
   def link_to_site_id(id)
     html = id.to_s
