@@ -6,6 +6,9 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all.order('posted_at DESC').page params[:page]
+    
+    # 
+    scrape_all
 
     # jsonに情報を追加
     @posts_json = []
