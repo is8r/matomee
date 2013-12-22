@@ -59,6 +59,7 @@ gem 'jquery-turbolinks'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'angularjs-rails'
+gem 'underscore-rails'
 
 # add development gems
 group :development do

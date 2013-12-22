@@ -1,4 +1,9 @@
 #= require_self
+#= require_tree ./common/
+#= require_tree ./app/
+#= require_tree ./plugin/
+#= require_tree ./Controllers/
+#= require_tree ./Services/
 
 # Creates new Angular module called 'Posts'
 Posts = angular.module('Posts', ['ngRoute'])
@@ -30,15 +35,22 @@ Posts.factory('postData', ['$http', ($http) ->
         }]
     isLoaded: false
 
-  postData.loadPosts = ->
+  postData.loadPosts = (deferred) ->
     if !postData.isLoaded
       $http.get('/posts.json').success( (data) ->
         postData.data.posts = data
         postData.isLoaded = true
         console.log('Successfully loaded posts.')
+        if deferred
+          deferred.resolve()
       ).error( ->
         console.error('Failed to load posts.')
+        if deferred
+          deferred.reject('Failed to load posts.')
       )
+    else
+      if deferred
+        deferred.resolve()
 
   postData.createPost = (newPost) ->
     # Client-side data validation

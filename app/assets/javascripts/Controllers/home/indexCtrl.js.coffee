@@ -3,7 +3,7 @@
   # $scope.data = postData
 
   $scope.data = postData.data
-  postData.loadPosts()
+  postData.loadPosts(null)
 
   # --------------------------------------------------
   # func

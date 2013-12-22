@@ -1,4 +1,4 @@
-@PostCtrl = ($scope, $routeParams, postData) ->
+@PostCtrl = ($scope, $routeParams, $location, $q, postData) ->
 
   $scope.data =
     postData: postData.data
@@ -6,12 +6,20 @@
       title: 'Loading...'
       description: ''
 
-  postData.loadPosts()
-
   $scope.data.postId = $routeParams.postId
   $scope.data.postJson = '/posts/'+$routeParams.postId+'.json'
 
-@PostCtrl.$inject = ['$scope', '$routeParams', 'postData']
+  $scope.prepPostData = ->
+    post = _.findWhere(postData.data.posts, { id: parseInt($scope.data.postId) })
+    $scope.data.currentPost.title = post.title
+    $scope.data.currentPost.description = post.description
+
+  # Create promise to be resolved after posts load
+  @deferred = $q.defer()
+  @deferred.promise.then($scope.prepPostData)
+  postData.loadPosts(@deferred)
+
+@PostCtrl.$inject = ['$scope', '$routeParams', '$location', '$q', 'postData']
 
 
   # $scope.data.postId = $routeParams.postId
