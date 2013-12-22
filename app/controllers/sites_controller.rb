@@ -1,10 +1,17 @@
 class SitesController < ApplicationController
   before_action :set_site, only: [:show, :edit, :update, :destroy]
 
+  require 'date'
+  require 'nokogiri'
+  require 'open-uri'
+
   # GET /sites
   # GET /sites.json
   def index
     @sites = Site.all
+
+
+    @debug = scrape 'http://blog.livedoor.jp/nwknews/index.rdf'
   end
 
   # GET /sites/1
@@ -61,6 +68,7 @@ class SitesController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_site
@@ -69,6 +77,36 @@ class SitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def site_params
-      params.require(:site).permit(:name, :url, :active)
+      params.require(:site).permit(:name, :url, :rss, :active)
     end
+
+    # --------------------------------------------------
+    # scrape
+    def scrape (uri)
+      page = URI.parse(uri).read
+      doc = Nokogiri::XML(open(uri))
+
+      re = ''
+      doc.search('item').each do |i|
+        # new
+        post = Post.new
+        post.title = i.search('title').text
+        post.url = i.search('link').text
+        post.description = i.search('description').text
+        # save
+        add_db_create_or_refresh(post)
+
+        re = post
+      end
+
+      re
+    end
+
+    def add_db_create_or_refresh(post)
+      posts = Post.where(:url => post.url).first
+      if posts.blank?
+        post.save
+      end
+    end
+
 end

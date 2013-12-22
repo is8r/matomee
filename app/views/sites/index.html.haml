@@ -1,11 +1,16 @@
 - @body_class = 'scaffold'
 
+= @debug
+
+%hr
+
 %h1 Listing sites
 
 %table
   %tr
     %th Name
     %th Url
+    %th Rss
     %th Active
     %th
     %th
@@ -15,6 +20,7 @@
     %tr
       %td= site.name
       %td= site.url
+      %td= site.rss
       %td= site.active
       %td= link_to 'Show', site
       %td= link_to 'Edit', edit_site_path(site)
