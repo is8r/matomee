@@ -1,11 +1,10 @@
-<!-- <a ng-click="createPost()" class="btn btn-white">New Post</a>
- -->
-
 <ul>
   <li ng-repeat="post in data.posts">
-    <a href="{{post.url}}" target="_blank">{{post.title}} {{post.site}}</a>
-    <a ng-click="viewPost(post.id)">{{post.time}}</a>
-    
+    <span ng-hide="{{isLoaderHidden}}"><i class="fa fa-refresh fa-spin"></i></span>
+    <span ng-hide="{{!isLoaderHidden}}">
+      <a href="{{post.url}}" target="_blank">{{post.title}} {{post.site}}</a>
+      <a ng-click="viewPost(post.id)">{{post.time}}</a>
+    </span>
   </li>
 </ul>
 

@@ -17,7 +17,7 @@ Posts.config(["$httpProvider", (provider) ->
 Posts.config(['$routeProvider', ($routeProvider) ->
 
   # $locationProvider.html5Mode(true).hashPrefix('!');
-  
+
   $routeProvider
     .when('/post/new', { templateUrl: '../assets/home/create.html', controller: 'CreateCtrl' } )
   	.when('/post/:postId', { templateUrl: '../assets/home/post.html', controller: 'PostCtrl' } )
@@ -32,7 +32,7 @@ Posts.factory('postData', ['$http', ($http) ->
   postData =
     data:
       posts: [{
-        title: 'Now Loading...',
+        title: '',
         description: '',
         url: '',
         site: '',
