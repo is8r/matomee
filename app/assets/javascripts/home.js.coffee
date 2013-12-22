@@ -19,8 +19,9 @@ Posts.config(['$routeProvider', ($routeProvider) ->
   # $locationProvider.html5Mode(true).hashPrefix('!');
 
   $routeProvider
-    .when('/post/new', { templateUrl: '../assets/home/create.html', controller: 'CreateCtrl' } )
-  	.when('/post/:postId', { templateUrl: '../assets/home/post.html', controller: 'PostCtrl' } )
+    # .when('/post/new', { templateUrl: '../assets/home/create.html', controller: 'CreateCtrl' } )
+    # .when('/post/:postId', { templateUrl: '../assets/home/post.html', controller: 'PostCtrl' } )
+    .when('/page/:pageId', { templateUrl: '../assets/home/index.html', controller: 'IndexCtrl' } )
 
   $routeProvider
   	.otherwise({ templateUrl: '../assets/home/index.html', controller: 'IndexCtrl' } )
@@ -40,9 +41,12 @@ Posts.factory('postData', ['$http', ($http) ->
         }]
     isLoaded: false
 
-  postData.loadPosts = (deferred) ->
-    if !postData.isLoaded
-      $http.get('/posts.json').success( (data) ->
+  postData.loadPosts = (deferred, pageId) ->
+    if !postData.isLoaded # ここを外さないと次のページにいけない
+      url = '/posts.json'
+      if pageId
+        url = '/posts.json?page=' + pageId
+      $http.get(url).success( (data) ->
         postData.data.posts = data[1]
         postData.data.info = data[0]
         postData.isLoaded = true

@@ -2,18 +2,19 @@
 <div class="pager" ng-class="{disabled: maxPage == 0}">
   <ul>
     <li ng-class="{disabled: currentPage == 0}">
-      <a href ng-click="prevPage()" class="btn btn-white btn-square">«</a>
+      <a href ng-click="nextPage(-1)" class="btn btn-white btn-square">«</a>
     </li>
     <li ng-repeat="i in pages">
-      <a href="#" class="btn btn-white btn-square" ng-class="{'btn-current': i == currentPage}">{{i+1}}</a>
+      <a href ng-click="onPage(i)" class="btn btn-white btn-square" ng-class="{'btn-current': i == currentPage}">{{i+1}}</a>
     </li>
     <li ng-class="{disabled: currentPage == maxPage - 1}">
-      <a href ng-click="nextPage()" class="btn btn-white btn-square">»</a>
+      <a href ng-click="nextPage(1)" class="btn btn-white btn-square">»</a>
     </li>
   </ul>
 </div>
 
 <div class="mt20"></div>
+
 <h1>list title {{currentPage+1}} / {{maxPage}} ({{itemSize}})</h1>
 <ul class="list">
   <li ng-repeat="post in data.posts">

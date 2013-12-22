@@ -1,9 +1,8 @@
-@IndexCtrl = ($scope, $location, $http, $q, postData) ->
+@IndexCtrl = ($scope, $location, $http, $q, $routeParams, postData) ->
   
-  # $scope.data = postData
-
   $scope.data = postData.data
   $scope.isLoaderHidden = false
+  $scope.currentPage = $routeParams.pageId | 0
 
   # Create promise to be resolved after posts load
   $scope.prepPostData = ->
@@ -12,20 +11,20 @@
 
   @deferred = $q.defer()
   @deferred.promise.then($scope.prepPostData)
-  postData.loadPosts(@deferred)
+  postData.loadPosts(@deferred, $scope.currentPage)
 
   # --------------------------------------------------
   # pager
   $scope.maxPage = 0
   $scope.getPager = ->
-    $scope.currentPage = $scope.data.info.now | 0
     $scope.pageSize = $scope.data.posts.length
     $scope.maxPage = Math.ceil($scope.data.info.all/$scope.pageSize)
     $scope.itemSize = $scope.data.info.all
     $scope.pages = [0..$scope.maxPage]
-  $scope.setPage = (n) ->
-  $scope.prevPage = ->
-  $scope.nextPage = ->
+  $scope.onPage = (n) ->
+    $location.url('/page/' + n)
+  $scope.nextPage = (n) ->
+    $location.url('/page/' + n)
 
   # --------------------------------------------------
   # func
@@ -35,6 +34,6 @@
   $scope.createPost = () ->
     $location.url('/post/new')
 
-@IndexCtrl.$inject = ['$scope', '$location', '$http', '$q', 'postData']
+@IndexCtrl.$inject = ['$scope', '$location', '$http', '$q', '$routeParams', 'postData']
 
 
