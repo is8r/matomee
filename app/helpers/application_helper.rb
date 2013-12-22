@@ -1,7 +1,7 @@
 module ApplicationHelper
-  
+
   def link_to_site_id(id)
-    html = ""
+    html = id.to_s
     site = Site.where(id: id).first
     if site
       url = main_app.sites_path + "/" + site.id.to_s
@@ -9,4 +9,5 @@ module ApplicationHelper
     end
     raw html
   end
+
 end

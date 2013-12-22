@@ -10,7 +10,6 @@ class SitesController < ApplicationController
   def index
     @sites = Site.all
 
-
     @debug = scrape 'http://blog.livedoor.jp/nwknews/index.rdf'
   end
 
@@ -93,19 +92,33 @@ class SitesController < ApplicationController
         post.title = i.search('title').text
         post.url = i.search('link').text
         post.description = i.search('description').text
-        # save
-        add_db_create_or_refresh(post)
+        post.site_id = get_site_id_rss(uri)
 
-        re = post
+        # save
+        add_db_create_or_update(post)
+
+        re = post[:site_id]
       end
 
       re
     end
 
-    def add_db_create_or_refresh(post)
+    # helper?
+    def get_site_id_rss(rss)
+      site = Site.where(rss: rss).first
+      unless site.blank?
+        site.id
+      end
+    end
+
+    # model?
+    def add_db_create_or_update(post)
       posts = Post.where(:url => post.url).first
       if posts.blank?
         post.save
+      end
+      if posts.site_id.blank? || post.site_id < 0
+        posts.update_attribute(:site_id, post.site_id)
       end
     end
 
