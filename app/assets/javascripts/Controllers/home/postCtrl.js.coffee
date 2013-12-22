@@ -5,6 +5,7 @@
     currentPost:
       title: 'Loading...'
       description: ''
+      url: ''
 
   $scope.data.postId = $routeParams.postId
   $scope.data.postJson = '/posts/'+$routeParams.postId+'.json'
@@ -13,6 +14,7 @@
     post = _.findWhere(postData.data.posts, { id: parseInt($scope.data.postId) })
     $scope.data.currentPost.title = post.title
     $scope.data.currentPost.description = post.description
+    $scope.data.currentPost.url = post.url
 
   # Create promise to be resolved after posts load
   @deferred = $q.defer()
@@ -21,20 +23,3 @@
 
 @PostCtrl.$inject = ['$scope', '$routeParams', '$location', '$q', 'postData']
 
-
-  # $scope.data.postId = $routeParams.postId
-
-  # postData.loadPosts()
-
-  # $scope.prepPostData = ->
-  #   post = _.findWhere(postData.data.posts, { id: parseInt($scope.data.postId) })
-  #   $scope.data.currentPost.title = post.title
-  #   $scope.data.currentPost.contents = post.contents
-
-  # $scope.navNewPost = ->
-  #   $location.url('/post/new')
-
-  # $scope.navHome = ->
-  #   $location.url('/')
-
-  # $scope.prepPostData()

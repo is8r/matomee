@@ -3,6 +3,7 @@
 <hr />
 <div class="row" ng-repeat="post in data.posts">
   <a ng-click="viewPost(post.id)">{{post.title}}</a>
+  <a href="{{post.url}}" class="btn btn-white" target="_blank">detail</a>
   <p>{{post.created_at}}</p>
 </div>
 
