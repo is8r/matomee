@@ -42,7 +42,8 @@ Posts.factory('postData', ['$http', ($http) ->
     isLoaded: false
 
   postData.loadPosts = (deferred, pageId) ->
-    if !postData.isLoaded # ここを外さないと次のページにいけない
+    postData.isLoaded = false # ここを入れないと次のページにいけない
+    if !postData.isLoaded
       url = '/posts.json'
       if pageId
         url = '/posts.json?page=' + pageId
