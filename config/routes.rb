@@ -6,6 +6,7 @@ Xxx::Application.routes.draw do
 
   # scaffold
   resources :posts
+  resources :sites
 
   # omniauth
   get '/auth/twitter', :as => :signin

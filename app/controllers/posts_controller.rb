@@ -29,40 +29,41 @@ class PostsController < ApplicationController
 
   # POST /posts
   # POST /posts.json
-  # def create
-  #   @post = Post.new(post_params)
-
-  #   respond_to do |format|
-  #     if @post.save
-  #       format.html { redirect_to @post, notice: 'Post was successfully created.' }
-  #       format.json { render action: 'show', status: :created, location: @post }
-  #     else
-  #       format.html { render action: 'new' }
-  #       format.json { render json: @post.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
   def create
-    # Create and save new post from data received from the client
-    post = Post.new
-    post.title = params[:new_post][:title][0...250] # Get only first 250 characters
-    post.description = params[:new_post][:description]
-    post.url = params[:new_post][:url]
+    @post = Post.new(post_params)
 
-    # Confirm post is valid and save or return HTTP error
-    if post.valid?
-      post.save!
-    else
-      render "public/422", :status => 422
-      return
-    end
-
-    # Respond with newly created post in json format
-    respond_with(post) do |format|
-      format.json { render :json => post.as_json }
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @post }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
   end
+
+  # angulr用
+  # def create
+  #   # Create and save new post from data received from the client
+  #   post = Post.new
+  #   post.title = params[:new_post][:title][0...250] # Get only first 250 characters
+  #   post.description = params[:new_post][:description]
+  #   post.url = params[:new_post][:url]
+
+  #   # Confirm post is valid and save or return HTTP error
+  #   if post.valid?
+  #     post.save!
+  #   else
+  #     render "public/422", :status => 422
+  #     return
+  #   end
+
+  #   # Respond with newly created post in json format
+  #   respond_with(post) do |format|
+  #     format.json { render :json => post.as_json }
+  #   end
+  # end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
