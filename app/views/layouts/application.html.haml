@@ -15,14 +15,15 @@
     = csrf_meta_tag
 
   %body{:class => @body_class || ''}
-    .wrapper
+    .container
       .header
         %h1
           = link_to '/' do
-            = Settings.app_name
-      .main
-        .contents.one.body
-          = yield
-      .footer
-        .copyright
-          copyright
+            %i.fa.fa-comment-o
+            / = Settings.app_name
+        .tab
+          = link_to '#' do
+            %i.fa.fa-bars
+
+      .contents
+        = yield

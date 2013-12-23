@@ -8,7 +8,7 @@
   # --------------------------------------------------
   # Create promise to be resolved after posts load
   $scope.loadHandler = () ->
-    $scope.isLoading = true
+    $scope.isLoading = false
     $scope.pageSize = $scope.data.info.size
     $scope.maxPage = Math.ceil($scope.data.info.all/$scope.pageSize) if !$scope.maxPage
     $scope.currentPage = parseInt($scope.data.info.now - 1)
@@ -18,7 +18,7 @@
       $scope.loadFin = true
 
   $scope.loadMore = () ->
-    $scope.isLoading = false
+    $scope.isLoading = true
     @deferred = $q.defer()
     @deferred.promise.then($scope.loadHandler)
     postData.loadNextPosts(@deferred)
@@ -27,15 +27,6 @@
   # --------------------------------------------------
 
   $scope.clickExternalLink = (url) ->
-    # # window.open(url)
-    # # return false
-    # # trace url
-    # $.ajax
-    #   url: '/posts.json'
-    #   success: (e) ->
-    #     trace e
-    #   error: (e) ->
-    #     trace e
     data =
       new_click:
         url: url
