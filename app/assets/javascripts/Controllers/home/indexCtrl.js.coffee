@@ -34,7 +34,6 @@
       url: '/posts.json'
       success: (e) ->
         trace e
-        # window.open(url)
       error: (e) ->
         trace e
 
