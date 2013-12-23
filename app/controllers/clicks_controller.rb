@@ -1,5 +1,6 @@
 class ClicksController < ApplicationController
   before_action :set_click, only: [:show, :edit, :update, :destroy]
+  respond_to :json
 
   # GET /clicks
   # GET /clicks.json
@@ -23,17 +24,54 @@ class ClicksController < ApplicationController
 
   # POST /clicks
   # POST /clicks.json
-  def create
-    @click = Click.new(click_params)
+  # def create
+  #   @click = Click.new(click_params)
 
-    respond_to do |format|
-      if @click.save
-        format.html { redirect_to @click, notice: 'Click was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @click }
+  #   respond_to do |format|
+  #     if @click.save
+  #       format.html { redirect_to @click, notice: 'Click was successfully created.' }
+  #       format.json { render action: 'show', status: :created, location: @click }
+  #     else
+  #       format.html { render action: 'new' }
+  #       format.json { render json: @click.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
+  # angulr用
+  def create
+    click = Click.new
+    # click.count = 1
+    url = params[:new_click][:url]
+    post = Post.where(url: url).first
+    if post
+      click = Click.where(post_id: post.id).first
+      if click
+        click.update_attribute(:count, click.count+1)
+        if click.valid?
+          click.save!
+        else
+          render "public/422", :status => 422
+          return
+        end
       else
-        format.html { render action: 'new' }
-        format.json { render json: @click.errors, status: :unprocessable_entity }
+        click = Click.new
+        click.count = 1
+        click.post_id = post.id
+        if click.valid?
+          click.save!
+        else
+          render "public/422", :status => 422
+          return
+        end
       end
+    else
+      render "public/422", :status => 422
+      return
+    end
+
+    respond_with(click) do |format|
+      format.json { render :json => click.as_json }
     end
   end
 

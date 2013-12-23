@@ -27,15 +27,24 @@
   # --------------------------------------------------
 
   $scope.clickExternalLink = (url) ->
-    # window.open(url)
-    # return false
-    # trace url
-    $.ajax
-      url: '/posts.json'
-      success: (e) ->
-        trace e
-      error: (e) ->
-        trace e
+    # # window.open(url)
+    # # return false
+    # # trace url
+    # $.ajax
+    #   url: '/posts.json'
+    #   success: (e) ->
+    #     trace e
+    #   error: (e) ->
+    #     trace e
+    data =
+      new_click:
+        url: url
+        count: 1
+    $http.post('/clicks.json', data).success( (data) ->
+      console.log('Successfully created click.')
+    ).error( ->
+      console.error('Failed to create new click.')
+    )
 
   # --------------------------------------------------
 
