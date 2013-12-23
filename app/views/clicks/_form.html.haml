@@ -1,0 +1,16 @@
+= form_for @click do |f|
+  - if @click.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@click.errors.count, "error")} prohibited this click from being saved:"
+      %ul
+        - @click.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :count
+    = f.number_field :count
+  .field
+    = f.label :post_id
+    = f.collection_select :post_id, Post.all, :id, :title
+  .actions
+    = f.submit 'Save'

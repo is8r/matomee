@@ -1,0 +1,23 @@
+- @body_class = 'scaffold'
+
+%h1 Listing clicks
+
+%table
+  %tr
+    %th Post_id
+    %th Count
+    %th
+    %th
+    %th
+
+  - @clicks.each do |click|
+    %tr
+      %td= link_to_post_id click.post_id
+      %td= click.count
+      %td= link_to 'Show', click
+      %td= link_to 'Edit', edit_click_path(click)
+      %td= link_to 'Destroy', click, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Click', new_click_path, {class: 'btn btn-white'}

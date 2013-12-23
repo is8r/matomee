@@ -1,5 +1,7 @@
 Xxx::Application.routes.draw do
 
+  resources :clicks
+
   # root
   # root "home#index"
   root to: 'home#index'

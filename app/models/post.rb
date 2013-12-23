@@ -5,5 +5,6 @@ class Post < ActiveRecord::Base
   validates :description, presence: true
   validates :url, presence: true
   belongs_to :site
+  has_many :clicks
 
 end
