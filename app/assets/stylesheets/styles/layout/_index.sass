@@ -1,85 +1,66 @@
 //----------------------------------------------------------------------
 //layouts
 
-$total-columns: 14 // a 16-column grid
-$column-width: 60px // each column is 4em wide
-$gutter-width: 20px // 1em gutters between columns
-$grid-padding: $gutter-width // grid-padding equal to gutters
+$contents-width: 600px
+$contents-learge-width-margin: 40px
+$break-point: $contents-width
 
 html, body
   position: relative
-  height: 100%
 
 body
-  .wrapper
-    +container
-    .header, .main, .footer
-      +c
-    
-    //grid
-    .main
-      .sidebar
-        +span-columns(6, 12)
-      .contents
-        +span-columns(6 omega, 12)
-        &.one
-          +span-columns(12, 12)
-    +at-breakpoint(8)
-      .main
-        .sidebar
-          +span-columns(3, 12)
-        .contents
-          +span-columns(9 omega, 12)
-          &.one
-            +span-columns(12, 12)
-    +at-breakpoint(12)
-      .main
-        .sidebar
-          +span-columns(3, 12)
-        .contents
-          +span-columns(9 omega, 12)
-          &.one
-            +span-columns(12, 12)
-    +at-breakpoint(14)
-      .main
-        .sidebar
-          +span-columns(3, 12)
-        .contents
-          +span-columns(9 omega, 12)
-          &.one
-            +span-columns(12, 12)
+  .container
+    +wrap($contents-width)
+    .header, .contents, .footer
+      //+cf
+      +wrap-inner($contents-width)
+      // padding-right: 20px
+      // padding-left: 20px
 
 //----------------------------------------------------------------------
 
 body
-  .wrapper
-    +container
-    
+  .container
     // debug color
     .header
-      //background: #f2f2f2
-    .main
-      .sidebar
-        //background: #ddd
-      .contents
-        //background: #eee
+      // background: #ffffff
+    .contents
+      // background: #ffffff
     .footer
-      //ackground: #f2f2f2
+      // background: #ffffff
     
     //style
     .header
+      +clearfix
       h1
         +font-learge
-        margin-top: 40px
-        margin-bottom: 40px
+        padding-top: 20px
+        padding-bottom: 20px
+        text-align: center
         a
           text-decoration: none
           color: $color-def
+          font-size: 40px
+          .fa.fa-smile-o
+            color: $color-def
+      .tab
+        display: none
+        float: right
+        padding-top: 24px
+        a
+          color: $color-def
+    .nav
+      display: none
+
+    .contents
+      padding-bottom: 40px
+
     .footer
-      .copyright
-        +font-small
-        margin-top: 40px
-        margin-bottom: 20px
+      text-align: center
+      padding-bottom: 40px
+      .fa.fa-smile-o
+        color: #dddddd
+        font-size: 30px
     .main
       .twitter-icon
         margin-left: -22px
@@ -88,6 +69,8 @@ body
           width: 20px
           height: auto
 
+.disabled
+  display: none
 
 
 

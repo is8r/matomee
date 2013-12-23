@@ -1,0 +1,11 @@
+<!-- <h1>{{ data.postId }} - {{data.postData.posts[data.postId].title }}</h1>
+<p>{{data.postData.posts[data.postId].description}}</p>
+<p>{{data.postData.posts[data.postId].created_at}}</p>
+<p>{{data.postData.posts[data.postId].url }}</p> -->
+
+<h1>{{ data.currentPost.title }}</h1>
+<p>{{ data.currentPost.description }}</p>
+<p>{{ data.currentPost.created_at }}</p>
+<a href="{{data.currentPost.url}}" class="btn btn-white" target="_blank">detail</a>
+
+<button ng-click="editPost()" class="btn btn-white">Edit</button>

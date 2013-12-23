@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131201104833) do
+ActiveRecord::Schema.define(version: 20131223080947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clicks", force: true do |t|
+    t.integer  "count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "post_id"
+  end
+
+  add_index "clicks", ["post_id"], name: "index_clicks_on_post_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.text     "title"
@@ -25,6 +34,19 @@ ActiveRecord::Schema.define(version: 20131201104833) do
     t.string   "thumb"
     t.boolean  "remove_thumb"
     t.string   "thumb_cache"
+    t.integer  "site_id"
+    t.datetime "posted_at"
+  end
+
+  add_index "posts", ["site_id"], name: "index_posts_on_site_id", using: :btree
+
+  create_table "sites", force: true do |t|
+    t.text     "name"
+    t.text     "url"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "rss"
   end
 
   create_table "users", force: true do |t|

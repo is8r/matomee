@@ -1,0 +1,18 @@
+<a ng-click="navHome()" class="brand">home</a>
+
+<h1>Create new post</h1>
+<form>
+  <fieldset>
+    <label>Title</label>
+    <input ng-model="formData.title" placeholder="Title" type="text" maxlength="250">
+    <br />
+    <label>Description</label>
+    <textarea ng-model="formData.description" placeholder="Description..."></textarea>
+    <br />
+    <label>Url</label>
+    <input ng-model="formData.url" placeholder="url" type="text">
+    <br />
+    <button ng-click="createPost()">Create</button>
+    <button ng-click="clearPost()">Clear post</button>
+  </fieldset>
+</form>

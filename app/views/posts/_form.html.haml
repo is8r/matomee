@@ -7,8 +7,14 @@
           %li= msg
 
   .field
+    = f.label :site_id
+    = f.collection_select :site_id, Site.all, :id, :name
+  .field
     = f.label :title
     = f.text_area :title
+  .field
+    = f.label :posted_at
+    = f.datetime_select :posted_at
   .field
     = f.label :description
     = f.text_area :description

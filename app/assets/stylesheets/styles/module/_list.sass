@@ -1,0 +1,52 @@
+.list
+  margin-bottom: 30px
+  border-top: 1px solid #f2f2f2
+  li
+    border-bottom: 1px solid #f2f2f2
+    padding: 10px 0 8px 0
+    .loader
+      display: block
+      padding: 20px 0 20px 20px
+      min-height: 20px
+    a
+      display: block
+      color: #000
+      line-height: 1.8em
+      font-size: 14px
+      padding: 5px 0 5px 0
+      text-decoration: none
+      &:active
+        background: #f2f2f2
+      @media screen and (max-width: $break-point)
+        font-size: 12px
+    .info
+      font-size: 10px
+      color: #888
+      padding: 0 0 6px 0
+      line-height: 1.6em
+      .twitter,.facebook,.hatena
+        margin-left: 3px
+        padding-left: 13px
+      .hatena
+        margin-left: 8px
+        +fa("\f097", 10px, 0px)
+      .twitter
+        +fa("\f099", 10px, 0px)
+      .facebook
+        padding-left: 10px
+        +fa("\f09a", 10px, 0px)
+      .count
+        display: inline
+        .user
+          margin-left: 10px
+      @media screen and (max-width: $break-point)
+        .count
+          display: block
+          .user
+            margin-left: 0
+
+
+
+
+
+

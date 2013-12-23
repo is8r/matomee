@@ -1,10 +1,17 @@
 - @body_class = 'scaffold'
 
-%h1 Listing posts
+%h1
+  Listing posts (
+  = Post.all.count
+  )
+
+= paginate @posts
 
 %table
   %tr
+    %th Site
     %th Title
+    %th Posted_at
     %th Description
     %th Url
     %th Thumb
@@ -14,7 +21,9 @@
 
   - @posts.each do |post|
     %tr
+      %td= link_to_site_id post.site_id
       %td= post.title
+      %td= foo_time post.posted_at
       %td= post.description
       %td= post.url
       %td= image_tag(post.thumb_url(:thumbnail), :width => 80, :height => 80)
@@ -25,4 +34,7 @@
 
 %br
 
-= link_to 'New Post', new_post_path
+%hr
+
+= link_to new_post_path, {class: 'btn btn-white'} do
+  'New Post'

@@ -1,10 +1,9 @@
 # Settings.app_name
 
 # meta
-app_name: 'AppName'
-app_title: 'AppName | AppTitle'
-app_description: 'app_description'
-app_keyword: 'app_keyword'
+app_name: 'まとめェ・・・'
+app_description: 'まとめェ・・・は2ちゃんねるのまとめのリンクを集めたアンテナサイトです。'
+app_keyword: 'まとめ, 2ch, 2ちゃんねる'
 
 # twitter
 # Settings.twitter_consumer_key, Settings.twitter_consumer_secret

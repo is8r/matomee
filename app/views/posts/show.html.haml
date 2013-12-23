@@ -1,10 +1,14 @@
 - @body_class = 'scaffold scaffold-show'
 
-%p#notice= notice
-
+%p
+  %b Site:
+  = link_to_site_id @post.site_id
 %p
   %b Title:
   = @post.title
+%p
+  %b posted_at:
+  = @post.posted_at
 %p
   %b Description:
   = @post.description

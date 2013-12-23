@@ -1,25 +1,29 @@
 !!! 5
-%html{:lang => "jp"}
+%html{"ng-app" => "Posts"}
   %head
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
     %meta{:content => "text/css", "http-equiv" => "Content-Style-Type"}
     %meta{:content => "text/javascript", "http-equiv" => "Content-Script-Type"}
     %title= Settings.app_name
 
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    / = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "//code.jquery.com/jquery-1.9.1.js"
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    / = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "application", controller_name
+    / = javascript_include_tag "application"
     = csrf_meta_tag
 
   %body{:class => @body_class || ''}
-    .wrapper
+    .container
       .header
         %h1
           = link_to '/' do
-            = Settings.app_name
-      .main
-        .contents.one.body
-          = yield
-      .footer
-        .copyright
-          copyright
+            %i.fa.fa-comment-o
+            / = Settings.app_name
+        .tab
+          = link_to '#' do
+            %i.fa.fa-bars
+
+      .contents
+        = yield

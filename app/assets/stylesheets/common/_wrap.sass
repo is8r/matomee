@@ -2,27 +2,33 @@
 
 // centering layout
 
-$iphone-margin: 10px
+$iphone-margin: 20px
 
 //iphoneで横100%の時は$fitをtrueに
+=wrap-inner($n, $fit: false)
+  position: relative
+  display: block
+  width: $n
+  margin: 0 auto
+  text-align: left
+  @media screen and (max-width: $break-point)
+    width: auto
+    min-width: none
+    @if $fit
+      margin-left: -$iphone-margin
+    padding-left: $iphone-margin
+    padding-right: $iphone-margin
+
 =wrap($n, $fit: false)
   width: 100%
   margin: 0
   padding: 0
   text-align: center
-  min-width: $n
+  //min-width: $n
   > .wrap-inner
-    position: relative
-    display: block
-    width: $n
-    margin: 0 auto
-    text-align: left
-  @media screen and (max-width: 480px)
+    +wrap-inner($n, $fit)
+  @media screen and (max-width: $break-point)
     width: auto
-    > .wrap-inner
-      width: auto
-      @if $fit
-        margin-left: -$iphone-margin
-      padding-left: $iphone-margin
-      padding-right: $iphone-margin
+    //min-width: none
+
 

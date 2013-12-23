@@ -1,35 +1,27 @@
 %p#notice= notice
 
-%h1
-  Home#index
-%p
-  Find me in app/views/home/index.html.haml
+%div{'class' => 'nav'}
+  = link_to root_path, {class: 'btn btn-white'} do
+    root_path
+  = link_to posts_path, {class: 'btn btn-white'} do
+    posts_path
+  = link_to sites_path, {class: 'btn btn-white'} do
+    sites_path
+  - if current_user
+    = link_to signout_path, {class: 'btn btn-white'} do
+      %i.fa.fa-twitter
+      %i.twitter-icon
+        = image_tag current_user.image
+      logout
+      (
+      = current_user.screen_name
+      でログインしています
+      )
+  - else
+    = link_to signin_path, {class: 'btn btn-white'} do
+      %i.fa.fa-twitter
+      login
+      -#<a href="/some_action" class="some-action" data-remote="true" data-method="post">some action</a>
 
-= link_to root_path, {class: 'btn btn-white'} do
-  root_path
 
-= link_to posts_path, {class: 'btn btn-white'} do
-  posts_path
-
-/ = link_to scaffoldtests_path, {class: 'btn btn-white'} do
-/   scaffoldtests_path
-
-%br
-%br
-
-- if current_user
-  = link_to signout_path, {class: 'btn btn-white'} do
-    %i.fa.fa-twitter
-    %i.twitter-icon
-      = image_tag current_user.image
-    logout
-    (
-    = current_user.screen_name
-    でログインしています
-    )
-- else
-  = link_to signin_path, {class: 'btn btn-white'} do
-    %i.fa.fa-twitter
-    login
-    -#<a href="/some_action" class="some-action" data-remote="true" data-method="post">some action</a>
-
+%div{'ng-view' => ''}
