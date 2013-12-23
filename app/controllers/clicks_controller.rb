@@ -1,7 +1,8 @@
 class ClicksController < ApplicationController
   before_action :set_click, only: [:show, :edit, :update, :destroy]
   respond_to :json
-
+  http_basic_authenticate_with :name => ENV["BASIC_AUTH_NAME"], :password => ENV["BASIC_AUTH_PW"] if Rails.env.production?
+  
   # GET /clicks
   # GET /clicks.json
   def index
