@@ -24,6 +24,67 @@
     postData.loadNextPosts(@deferred)
   $scope.loadMore()
 
+  # --------------------------------------------------
+
+  $scope.clickExternalLink = (url) ->
+    # window.open(url)
+    # return false
+    # trace url
+    $.ajax
+      url: '/posts.json'
+      success: (e) ->
+        trace e
+        # window.open(url)
+      error: (e) ->
+        trace e
+
+  # --------------------------------------------------
+
+  $scope.initShares = (url) ->
+    $scope.gethatena(url)
+    $scope.getTwitter(url)
+    $scope.getFacebook(url)
+
+  $scope.gethatena = (url) ->
+    $.ajax
+      url: 'http://api.b.st-hatena.com/entry.count?callback=?'
+      dataType: 'jsonp'
+      data:
+        url: url
+      success: (e) ->
+        # trace e
+        $('li', '.list').each (i, el) ->
+          if $(el).data('url') == url
+            $('.hatena', el).text e
+      error: (e) ->
+        trace e
+  $scope.getTwitter = (url) ->
+    $.ajax
+      url: 'http://urls.api.twitter.com/1/urls/count.json'
+      dataType: 'jsonp'
+      data:
+        url: url
+      success: (e) ->
+        # trace e.count
+        $('li', '.list').each (i, el) ->
+          if $(el).data('url') == url
+            $('.twitter', el).text e.count
+      error: (e) ->
+        trace e
+  $scope.getFacebook = (url) ->
+    $.ajax
+      url: 'https://graph.facebook.com/'
+      dataType: 'jsonp'
+      data:
+        id: url
+      success: (e) ->
+        # trace e.shares
+        $('li', '.list').each (i, el) ->
+          if $(el).data('url') == url
+            $('.facebook', el).text e.shares
+      error: (e) ->
+        trace e
+
   # # --------------------------------------------------
   # # pager
   # $scope.maxPage = 0

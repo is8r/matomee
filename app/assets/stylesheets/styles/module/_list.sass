@@ -26,8 +26,17 @@
       text-decoration: none
       &:active
         background: #f2f2f2
-      .date, .site
-        font-size: 10px
-        color: #888
-
-
+    .info
+      font-size: 10px
+      color: #888
+      padding: 0 0 10px 0
+      .twitter,.facebook,.hatena
+        margin-left: 5px
+        padding-left: 13px
+      .twitter
+        +fa("\f099", 10px, 0px)
+      .facebook
+        padding-left: 10px
+        +fa("\f09a", 10px, 0px)
+      .hatena
+        +fa("\f097", 10px, 0px)

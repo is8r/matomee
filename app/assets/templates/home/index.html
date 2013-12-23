@@ -1,14 +1,19 @@
 <div class="mt20"></div>
 
 <ul class="list" ng-class="{disabled: !loadPosts}">
-  <li ng-repeat="post in data.posts">
-    <a href="{{post.url}}" target="_blank">
+  <li ng-repeat="post in data.posts" data-url="{{post.url}}" ng-init="initShares(post.url)">
+    <!-- <a href="{{post.url}}" target="_blank" ng-click="clickExternalLink()"> -->
+    <a ng-click="clickExternalLink(post.url)">
       <span class="view">0</span>
       {{post.title}}
-      <div class="info">
-        <span class="date">{{post.time}}</span> <span class="site">[{{post.site}}]</span>
-      </div>
     </a>
+    <div class="info">
+      <span class="date">{{post.time}}</span>
+      <span class="site">[{{post.site}}]</span>
+      <span class="hatena"></span>
+      <span class="twitter"></span>
+      <span class="facebook"></span>
+    </div>
   </li>
 </ul>
 
