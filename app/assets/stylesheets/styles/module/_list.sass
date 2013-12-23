@@ -3,6 +3,7 @@
   border-top: 1px solid #f2f2f2
   li
     border-bottom: 1px solid #f2f2f2
+    padding: 15px 0 10px 0
     .loader
       display: block
       padding: 20px 0 20px 20px
@@ -16,10 +17,13 @@
       text-decoration: none
       &:active
         background: #f2f2f2
+      +at-breakpoint(6)
+        font-size: 14px
     .info
       font-size: 10px
       color: #888
-      padding: 0 0 10px 0
+      padding: 0 0 6px 0
+      line-height: 1.6em
       .twitter,.facebook,.hatena
         margin-left: 3px
         padding-left: 13px
@@ -32,4 +36,17 @@
         padding-left: 10px
         +fa("\f09a", 10px, 0px)
       .user
-        margin-left: 10px
+        margin-left: 0px
+      .count
+        display: block
+      +at-breakpoint(6)
+        .count
+          display: inline
+          .user
+            margin-left: 10px
+
+
+
+
+
+
