@@ -3,6 +3,7 @@
   $scope.data = postData.data
   $scope.maxPage = 0
   $scope.isLoading = true
+  $scope.loadFin = false
 
   # --------------------------------------------------
   # Create promise to be resolved after posts load
@@ -13,6 +14,8 @@
     $scope.currentPage = parseInt($scope.data.info.now - 1)
     $scope.loadPosts = $scope.data.posts.length
     $scope.allPosts = $scope.data.info.all
+    if $scope.allPosts == $scope.loadPosts
+      $scope.loadFin = true
 
   $scope.loadMore = () ->
     $scope.isLoading = false

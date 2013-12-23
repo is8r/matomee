@@ -46,8 +46,10 @@ Posts.factory('postData', ['$http', ($http) ->
         if postData.data.posts.length == 0
           postData.data.posts = data[1]
         else
-          postData.data.posts = postData.data.posts.concat(data[1])
-        trace data[0].now, postData.data.posts.length
+          # postData.data.posts = postData.data.posts.concat(data[1])
+          for p in data[1]
+            postData.data.posts.push p if postData.data.posts.indexOf(p) == -1
+        # # trace data[0].now, postData.data.posts.length
 
         postData.data.info = data[0]
         postData.isLoadedPages.push data[0].now
