@@ -17,6 +17,7 @@ class PostsController < ApplicationController
     info = {}
     info[:all] = Post.all.count
     info[:now] = params[:page]
+    info[:size] = @posts.count
     @posts_json.push info
 
     # 

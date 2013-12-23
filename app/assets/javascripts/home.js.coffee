@@ -27,30 +27,30 @@ Posts.config(['$routeProvider', ($routeProvider) ->
   	.otherwise({ templateUrl: '../assets/home/index.html', controller: 'IndexCtrl' } )
 ])
 
+# --------------------------------------------------
+# --------------------------------------------------
 # model
 Posts.factory('postData', ['$http', ($http) ->
 
   postData =
     data:
-      posts: [{
-        title: '',
-        description: '',
-        url: '',
-        site: '',
-        time: ''
-        }]
-    isLoaded: false
+      posts: []
+    isLoadedPages: []
+    pageId: 0
 
-  postData.loadPosts = (deferred, pageId) ->
-    postData.isLoaded = false # ここを入れないと次のページにいけない
-    if !postData.isLoaded
-      url = '/posts.json'
-      if pageId
-        url = '/posts.json?page=' + pageId
+  postData.loadNextPosts = (deferred) ->
+    postData.pageId++
+    if postData.isLoadedPages.indexOf(postData.pageId) == -1
+      url = '/posts.json?page=' + postData.pageId
       $http.get(url).success( (data) ->
-        postData.data.posts = data[1]
+        if postData.data.posts.length == 0
+          postData.data.posts = data[1]
+        else
+          postData.data.posts = postData.data.posts.concat(data[1])
+        trace data[0].now, postData.data.posts.length
+
         postData.data.info = data[0]
-        postData.isLoaded = true
+        postData.isLoadedPages.push data[0].now
         console.log('Successfully loaded posts.')
         if deferred
           deferred.resolve()
