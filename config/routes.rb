@@ -1,7 +1,5 @@
 Xxx::Application.routes.draw do
 
-  resources :clicks
-
   # root
   # root "home#index"
   root to: 'home#index'
@@ -9,6 +7,7 @@ Xxx::Application.routes.draw do
   # scaffold
   resources :posts
   resources :sites
+  resources :clicks
 
   # omniauth
   get '/auth/twitter', :as => :signin

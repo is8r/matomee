@@ -24,6 +24,7 @@ class PostsController < ApplicationController
     posts = []
     @posts.each do |i|
       site = Site.where(id: i.site_id).first
+      click = Click.where(post_id: i.id).first
       post = {}
       post[:id] = i.id
       post[:title] = i.title
@@ -31,6 +32,11 @@ class PostsController < ApplicationController
       post[:description] = i.description
       post[:site] = site.name
       post[:time] = ApplicationController.helpers.foo_time(i.posted_at)
+      if click
+        post[:click] = click.count
+      else
+        post[:click] = 0
+      end
       posts.push post
     end
     @posts_json.push posts
