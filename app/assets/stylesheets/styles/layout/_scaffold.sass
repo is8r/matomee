@@ -1,5 +1,12 @@
+$contents-width: 940px
+
 .scaffold
-  
+  .container
+    +wrap($contents-width)
+    .contents
+      +wrap-inner($contents-width)
+
+  @extend .body
   // index
   form
     @extend .form
