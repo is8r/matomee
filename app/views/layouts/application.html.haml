@@ -13,6 +13,8 @@
     / = javascript_include_tag "application", "data-turbolinks-track" => true
     = javascript_include_tag "application", controller_name
     / = javascript_include_tag "application"
+    
+    = analytics_init if Rails.env.production?
     = csrf_meta_tag
 
   %body{:class => @body_class || ''}
