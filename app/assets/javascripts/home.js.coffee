@@ -1,4 +1,3 @@
-#= require_self
 #= require_tree ./common/
 #= require_tree ./app/
 #= require_tree ./plugin/
