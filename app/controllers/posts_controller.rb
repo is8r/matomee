@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @posts = Post.all.order('posted_at DESC').page params[:page]
     
     # 
-    # scrape_all
+    scrape_all
 
     # jsonに情報を追加
     @posts_json = []
