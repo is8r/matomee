@@ -1,12 +1,12 @@
-/ %p#notice= notice
+%p#notice= notice
 
-/ %div{'class' => 'nav'}
-/   = link_to root_path, {class: 'btn btn-white'} do
-/     root_path
-/   = link_to posts_path, {class: 'btn btn-white'} do
-/     posts_path
-/   = link_to sites_path, {class: 'btn btn-white'} do
-/     sites_path
-/   -#= render 'login'
+%div{'class' => 'nav'}
+  = link_to root_path, {class: 'btn btn-white'} do
+    root_path
+  = link_to posts_path, {class: 'btn btn-white'} do
+    posts_path
+  = link_to sites_path, {class: 'btn btn-white'} do
+    sites_path
+  = render 'login'
 
-/ %div{'ng-view' => ''}
+%div{'ng-view' => ''}

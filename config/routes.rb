@@ -2,7 +2,7 @@ Xxx::Application.routes.draw do
 
   # root
   # root "home#index"
-  root 'home#index'
+  root 'posts#index'
 
   # scaffold
   resources :posts
