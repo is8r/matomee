@@ -18,5 +18,8 @@
   .field
     = f.label :active
     = f.check_box :active
+  .field
+    = f.label :category_id
+    = f.collection_select :category_id, Category.all, :id, :name
   .actions
     = f.submit 'Save'

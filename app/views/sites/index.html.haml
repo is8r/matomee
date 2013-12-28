@@ -5,6 +5,7 @@
 %table
   %tr
     %th Name
+    %th Category
     %th Url
     %th Rss
     %th Active
@@ -15,6 +16,7 @@
   - @sites.each do |site|
     %tr
       %td= site.name
+      %td= link_to_category_id site.category_id
       %td= site.url
       %td= site.rss
       %td= site.active

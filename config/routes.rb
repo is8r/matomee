@@ -1,5 +1,7 @@
 Xxx::Application.routes.draw do
 
+  resources :categories
+
   root "top#index"
   # root
   # root "home#index"
