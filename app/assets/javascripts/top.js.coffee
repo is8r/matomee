@@ -45,6 +45,8 @@ Posts.factory('postData', ['$http', ($http) ->
   postData.reset()
 
   postData.loadNextPosts = (deferred, categoryId, refresh) ->
+    $.sidr('close')
+    
     if refresh == true
       trace 'refresh'
       postData.pageId = 0
