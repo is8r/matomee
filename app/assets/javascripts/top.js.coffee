@@ -22,11 +22,11 @@ Posts.config(['$routeProvider', ($routeProvider) ->
   $routeProvider
     # .when('/post/new', { templateUrl: '../assets/home/create.html', controller: 'CreateCtrl' } )
     # .when('/post/:postId', { templateUrl: '../assets/home/post.html', controller: 'PostCtrl' } )
-    .when('/page/:pageId', { templateUrl: '../assets/home/index.html', controller: 'IndexCtrl' } )
-    .when('/category/:categoryId', { templateUrl: '../assets/home/index.html', controller: 'IndexCtrl' } )
+    .when('/page/:pageId', { templateUrl: '../assets/top/index.html', controller: 'IndexCtrl' } )
+    .when('/category/:categoryId', { templateUrl: '../assets/top/index.html', controller: 'IndexCtrl' } )
 
   $routeProvider
-  	.otherwise({ templateUrl: '../assets/home/index.html', controller: 'IndexCtrl' } )
+  	.otherwise({ templateUrl: '../assets/top/index.html', controller: 'IndexCtrl' } )
 ])
 
 # --------------------------------------------------
