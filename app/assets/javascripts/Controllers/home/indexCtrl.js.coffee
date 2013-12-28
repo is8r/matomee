@@ -21,7 +21,12 @@
     $scope.isLoading = true
     @deferred = $q.defer()
     @deferred.promise.then($scope.loadHandler)
-    postData.loadNextPosts(@deferred)
+    refresh = false
+    if $scope.categoryId != $routeParams.categoryId
+      $scope.categoryId = $routeParams.categoryId
+      refresh = true
+    postData.loadNextPosts(@deferred, $scope.categoryId, refresh)
+  
   $scope.loadMore()
 
   # --------------------------------------------------

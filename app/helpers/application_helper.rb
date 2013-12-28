@@ -8,11 +8,9 @@ module ApplicationHelper
     html = ''
     category = Category.all
     category.each do |i|
-      name = i.name
-      id = i.id
       html += '<li>'
-      html += '<a href="#">'
-      html += name
+      html += '<a href="/#/category/' + i.id.to_s + '">'
+      html += i.name
       html += '</a>'
       html += '</li>'
     end

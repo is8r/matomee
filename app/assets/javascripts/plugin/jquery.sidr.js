@@ -108,8 +108,8 @@
         // Open menu
         if(displace){
           $body.addClass('sidr-animating').css({
-            width: $body.width(),
-            position: 'absolute'
+            width: $body.width()
+            // position: 'absolute'
           }).animate(bodyAnimation, speed, function() {
             $(this).addClass(bodyClass);
           });

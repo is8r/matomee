@@ -22,7 +22,8 @@ Posts.config(['$routeProvider', ($routeProvider) ->
   $routeProvider
     # .when('/post/new', { templateUrl: '../assets/home/create.html', controller: 'CreateCtrl' } )
     # .when('/post/:postId', { templateUrl: '../assets/home/post.html', controller: 'PostCtrl' } )
-    # .when('/page/:pageId', { templateUrl: '../assets/home/index.html', controller: 'IndexCtrl' } )
+    .when('/page/:pageId', { templateUrl: '../assets/home/index.html', controller: 'IndexCtrl' } )
+    .when('/category/:categoryId', { templateUrl: '../assets/home/index.html', controller: 'IndexCtrl' } )
 
   $routeProvider
   	.otherwise({ templateUrl: '../assets/home/index.html', controller: 'IndexCtrl' } )
@@ -33,20 +34,31 @@ Posts.config(['$routeProvider', ($routeProvider) ->
 # model
 Posts.factory('postData', ['$http', ($http) ->
 
-  postData =
-    data:
-      posts: []
-    isLoadedPages: []
-    pageId: 0
+  postData = {}
+  postData.reset = () ->
+    postData =
+      data:
+        posts: []
+      isLoadedPages: []
+      pageId: 0
+      categoryId: 0
+  postData.reset()
 
-  postData.loadNextPosts = (deferred) ->
+  postData.loadNextPosts = (deferred, categoryId, refresh) ->
+    if refresh == true
+      trace 'refresh'
+      postData.pageId = 0
+      postData.categoryId = 0
+      postData.data.posts = []
+      # postData.reset()
+
     postData.pageId++
     if postData.isLoadedPages.indexOf(postData.pageId) == -1
       page = postData.pageId || 1
       url = '/posts.json?page=' + page
-      # if postData.categoryId
-      #   url += '&category=' postData.categoryId
-      
+      if categoryId
+        url += '&category=' + categoryId
+
       $http.get(url).success( (data) ->
         if postData.data.posts.length == 0
           postData.data.posts = data[1]
