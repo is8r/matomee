@@ -61,6 +61,7 @@ gem 'cloudinary'
 gem 'angularjs-rails'
 gem 'underscore-rails'
 gem 'kaminari'
+gem 'parallel'
 
 # add development gems
 group :development do

@@ -5,6 +5,17 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   # http_basic_authenticate_with :name => ENV["BASIC_AUTH_NAME"], :password => ENV["BASIC_AUTH_PW"] if Rails.env.production?
   
+  require 'parallel'
+  
+  # --------------------------------------------------
+  # スケジューラーから実行
+  # すべての登録商品の在庫を調べる
+  def scrape_update
+    Parallel.each(Site.all, in_threads: Site.all.count-1) {|i|
+      scrape i.rss
+    }
+  end
+
   private
 
     def current_user
