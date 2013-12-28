@@ -12,9 +12,10 @@
 %table
   %tr
     %th Site
+    %th Category
     %th Title
     %th Posted_at
-    %th Description
+    / %th Description
     %th Url
     %th Thumb
     %th
@@ -24,9 +25,10 @@
   - @posts.each do |post|
     %tr
       %td= link_to_site_id post.site_id
+      %td= link_to_site_id_to_category post.site_id
       %td= post.title
       %td= foo_time post.posted_at
-      %td= post.description
+      / %td= post.description
       %td= post.url
       %td= image_tag(post.thumb_url(:thumbnail), :width => 80, :height => 80)
 
