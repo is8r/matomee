@@ -20,6 +20,11 @@ class PostsController < ApplicationController
       end
       @posts = Post.where(site_id: ar).order('posted_at DESC').page params[:page]
       info[:all] = Post.where(site_id: ar).order('posted_at DESC').count
+    # elsif params[:type] == 'rate'
+    #   # clicks = Click.all.order('count DESC')
+    #   @posts = Post.all
+    #   info[:all] = Post.all.count
+    #   info[:count] = Post.where(id: 1).first.click.count
     else
       @posts = Post.all.order('posted_at DESC').page params[:page]
       info[:all] = Post.all.count
@@ -145,7 +150,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :description, :url, :thumb, :remove_thumb, :thumb_cache, :site_id, :posted_at)
+      params.require(:post).permit(:title, :description, :url, :thumb, :remove_thumb, :thumb_cache, :site_id, :posted_at, :clicks)
     end
 end
 
