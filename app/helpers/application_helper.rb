@@ -6,7 +6,6 @@ module ApplicationHelper
 
   def links_categories()
     html = ''
-    html += '<ul>'
     category = Category.all
     category.each do |i|
       name = i.name
@@ -17,7 +16,6 @@ module ApplicationHelper
       html += '</a>'
       html += '</li>'
     end
-    html += '</ul>'
     raw html
   end
 

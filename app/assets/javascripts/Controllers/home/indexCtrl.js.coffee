@@ -6,7 +6,7 @@
   $scope.loadFin = false
 
   # --------------------------------------------------
-  # Create promise to be resolved after posts load
+  # load
   $scope.loadHandler = () ->
     $scope.isLoading = false
     $scope.pageSize = $scope.data.info.size

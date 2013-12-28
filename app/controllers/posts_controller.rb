@@ -6,19 +6,32 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.order('posted_at DESC').page params[:page]
-    
     # 
     scrape_all
+
+    # 
+    info = {}
+
+    if params[:category]
+      category = Category.where(id: params[:category]).first
+      ar = []
+      category.sites.each do |i|
+        ar.push i.id
+      end
+      @posts = Post.where(site_id: ar).order('posted_at DESC').page params[:page]
+      info[:all] = Post.where(site_id: ar).order('posted_at DESC').count
+    else
+      @posts = Post.all.order('posted_at DESC').page params[:page]
+      info[:all] = Post.all.count
+    end
 
     # jsonに情報を追加
     @posts_json = []
 
     # 
-    info = {}
-    info[:all] = Post.all.count
-    info[:now] = params[:page]
-    info[:size] = @posts.count
+    info[:size] = 25
+    info[:now] = params[:page] || 1
+    info[:max] = (info[:all]/info[:size]).ceil + 1
     @posts_json.push info
 
     # 

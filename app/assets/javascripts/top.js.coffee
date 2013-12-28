@@ -22,7 +22,7 @@ Posts.config(['$routeProvider', ($routeProvider) ->
   $routeProvider
     # .when('/post/new', { templateUrl: '../assets/home/create.html', controller: 'CreateCtrl' } )
     # .when('/post/:postId', { templateUrl: '../assets/home/post.html', controller: 'PostCtrl' } )
-    .when('/page/:pageId', { templateUrl: '../assets/home/index.html', controller: 'IndexCtrl' } )
+    # .when('/page/:pageId', { templateUrl: '../assets/home/index.html', controller: 'IndexCtrl' } )
 
   $routeProvider
   	.otherwise({ templateUrl: '../assets/home/index.html', controller: 'IndexCtrl' } )
@@ -42,7 +42,11 @@ Posts.factory('postData', ['$http', ($http) ->
   postData.loadNextPosts = (deferred) ->
     postData.pageId++
     if postData.isLoadedPages.indexOf(postData.pageId) == -1
-      url = '/posts.json?page=' + postData.pageId
+      page = postData.pageId || 1
+      url = '/posts.json?page=' + page
+      # if postData.categoryId
+      #   url += '&category=' postData.categoryId
+      
       $http.get(url).success( (data) ->
         if postData.data.posts.length == 0
           postData.data.posts = data[1]
