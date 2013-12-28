@@ -1,0 +1,28 @@
+.sidr-trigger
+  $w: 50px
+  width: $w
+  height: $w
+  position: absolute
+  top: 0
+  left: 0
+  // border-bottom: 1px solid #f2f2f2
+  z-index: 999
+  text-decoration: none
+  i
+    display: block
+    text-align: center
+    line-height: $w
+    //color: $color-ccent
+    color: $color-def
+    font-size: 12px
+  +transition(all, 0.5s)
+  &.open
+    background: #222
+    i
+      color: #fff
+      +rotate(90deg)
+  &:hover
+    background: $color-accent
+    i
+      color: #fff
+

@@ -4,6 +4,23 @@ module ApplicationHelper
     time_ago_in_words(datetime) + '前'
   end
 
+  def links_categories()
+    html = ''
+    html += '<ul>'
+    category = Category.all
+    category.each do |i|
+      name = i.name
+      id = i.id
+      html += '<li>'
+      html += '<a href="#">'
+      html += name
+      html += '</a>'
+      html += '</li>'
+    end
+    html += '</ul>'
+    raw html
+  end
+
   def get_category_count(id)
     html = id.to_s
     category = Site.where(category_id: id)

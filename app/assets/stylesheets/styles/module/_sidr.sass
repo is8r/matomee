@@ -1,0 +1,130 @@
+.sidr
+
+  // sidr style
+  $w: 260px
+  display: none
+  position: absolute
+  top: 0
+  width: $w
+  background: #f8f8f8
+  min-height: 100%
+  &.left
+    left: -$w !important
+    right: auto
+
+  // section style
+  .search
+    $w: 50px
+    margin: 0 auto 0 auto
+    position: relative
+    width: 100%
+    height: $w
+    +fa("\f002", 14px, 20px, 18px)
+    input[type="text"]
+      +form-reset
+      display: block
+      color: #5d5c5d
+      font-size: 15px
+      line-height: 21px
+      width: 200px
+      height: $w - 17px
+      padding: 8px 19px 8px 40px
+      background: #fff
+      border: 1px solid #f2f2f2
+      +border-radius(2px)
+      background: #f8f8f8
+      +transition
+      &:focus
+        background: #fff
+    input[type="submit"]
+      display: none
+
+  .description
+    padding: 50px 40px 30px 40px
+    text-align: left
+    h4
+      +font-normal(14px)
+      margin-bottom: 10px
+    > p
+      +font-normal(12px)
+      color: $color-def
+      line-height: 1.8em
+      margin-bottom: 20px
+    > ul
+      &.icons//未使用
+        +clearfix
+        width: 200px
+        margin-left: -8px
+        margin-bottom: 10px
+        li
+          $r: 40px
+          float: left
+          margin-left: 8px
+          margin-bottom: 8px
+          a
+            background: #000
+            color: #fff
+            +transition
+            &:hover
+              background: $color-accent
+            &:before
+              width: $r
+              text-align: center
+          &.portrait
+            img
+              +border-radius($r)
+              width: $r
+              height: auto
+          &.twitter
+            a
+              +fa("\f099", 18px, 0, 0)
+          &.github
+            a
+              +fa("\f113", 18px, 0, 0)
+          &.rss
+            a
+              +fa("\f09e", 18px, 0, 0)
+  .links
+    padding: 20px 40px 30px 40px
+    text-align: left
+    > ul
+      border-top: 1px solid #eee
+      li
+        padding: 0
+        border-bottom: 1px solid #eee
+        a
+          +font-normal(12px)
+          color: $color-def
+          display: block
+          padding: 10px 0 10px 0
+          +transition
+          &:hover
+            color: $color-accent
+            .count
+              color: $color-accent
+        &:first-child
+          border-top: none
+        .count
+          +font-normal(11px)
+          $r: 20px
+          display: inline-blick
+          float: right
+          text-align: center
+          background: #fff
+          //background: $color-accent
+          border: 1px solid #f2f2f2
+          //color: #fff
+          width: $r
+          height: $r
+          line-height: $r
+          +border-radius($r)
+          margin-top: -4px
+          +transition
+
+  .credit
+    padding-bottom: 40px
+    padding-left: 40px
+    text-align: left
+    a
+      +font-small
+      color: $color-def

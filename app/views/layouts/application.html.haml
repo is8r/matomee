@@ -19,14 +19,15 @@
 
   %body{:class => @body_class || ''}
     .container
+      .tab
+        = link_to '#', {class: 'sidr-trigger js-sidr-trigger'} do
+          %i.fa.fa-bars
       .header
         %h1
           = link_to '/' do
             %i.fa.fa-comment-o
             / = Settings.app_name
-        .tab
-          = link_to '#' do
-            %i.fa.fa-bars
 
       .contents
         = yield
+    = render partial: 'layouts/sidr'
