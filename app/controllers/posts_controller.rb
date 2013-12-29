@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     # 
-    scrape_update
+    # scrape_update
 
     # 
     info = {}
