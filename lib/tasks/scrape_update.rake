@@ -1,3 +1,3 @@
-task :rake scrape_update => :environment do
-  ApplicationController.scrape_update
+task :scrape_update => :environment do
+  ApplicationController.helpers.scrape_update
 end
