@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
   before_action :set_site, only: [:show, :edit, :update, :destroy]
-  http_basic_authenticate_with :name => ENV["BASIC_AUTH_NAME"], :password => ENV["BASIC_AUTH_PW"] if Rails.env.production?
+  # http_basic_authenticate_with :name => ENV["BASIC_AUTH_NAME"], :password => ENV["BASIC_AUTH_PW"] if Rails.env.production?
   
   require 'date'
   require 'nokogiri'
@@ -12,9 +12,9 @@ class SitesController < ApplicationController
   def index
     @sites = Site.all.order(:created_at)
 
-    scrape_all
-
+    @debug = scrape_all
     # @debug = scrape 'http://workingnews.blog117.fc2.com/?xml'
+    
     respond_to do |format|
       format.html { render :html => @sites }
       format.json { render :json => @sites.as_json }

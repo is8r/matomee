@@ -4,7 +4,6 @@ module ApplicationHelper
   
   # --------------------------------------------------
   # スケジューラーから実行
-  # すべての登録商品の在庫を調べる
   def scrape_update
     Parallel.each(Site.all, in_threads: Site.all.count-1) {|i|
       scrape i.rss

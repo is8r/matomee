@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   respond_to :json
-  http_basic_authenticate_with :name => ENV["BASIC_AUTH_NAME"], :password => ENV["BASIC_AUTH_PW"] if Rails.env.production?
+  # http_basic_authenticate_with :name => ENV["BASIC_AUTH_NAME"], :password => ENV["BASIC_AUTH_PW"] if Rails.env.production?
   
   # GET /posts
   # GET /posts.json
@@ -95,28 +95,6 @@ class PostsController < ApplicationController
       end
     end
   end
-
-  # angulr用
-  # def create
-  #   # Create and save new post from data received from the client
-  #   post = Post.new
-  #   post.title = params[:new_post][:title][0...250] # Get only first 250 characters
-  #   post.description = params[:new_post][:description]
-  #   post.url = params[:new_post][:url]
-
-  #   # Confirm post is valid and save or return HTTP error
-  #   if post.valid?
-  #     post.save!
-  #   else
-  #     render "public/422", :status => 422
-  #     return
-  #   end
-
-  #   # Respond with newly created post in json format
-  #   respond_with(post) do |format|
-  #     format.json { render :json => post.as_json }
-  #   end
-  # end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
