@@ -62,6 +62,7 @@ gem 'angularjs-rails'
 gem 'underscore-rails'
 gem 'kaminari'
 gem 'parallel'
+gem 'figaro'
 
 # add development gems
 group :development do
