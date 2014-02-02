@@ -1,0 +1,4 @@
+# Add application configuration variables here, as shown below.
+#
+TWITTER_CONSUMER_KEY: YOUR_TWITTER_CONSUMER_KEY
+TWITTER_CONSUMER_SECRET: YOUR_TWITTER_CONSUMER_SECRET
