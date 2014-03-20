@@ -23,6 +23,9 @@ class SitesController < ApplicationController
     # 同期実行
     Site.sync_with_site_rows
 
+    # スクレイピング
+    ApplicationController.helpers.scrape_update
+
     respond_to do |format|
       format.html { render :html => @sites }
       format.json { render :json => @sites.as_json }
