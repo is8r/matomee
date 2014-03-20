@@ -63,6 +63,7 @@ gem 'underscore-rails'
 gem 'kaminari'
 gem 'parallel'
 gem 'figaro'
+gem 'activeresource-google_spreadsheets'
 
 # add development gems
 group :development do

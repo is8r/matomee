@@ -5,6 +5,10 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
+
+    # 同期実行
+    # Category.sync_with_category_rows
+
   end
 
   # GET /categories/1

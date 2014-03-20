@@ -12,9 +12,21 @@ class SitesController < ApplicationController
   def index
     @sites = Site.all.order(:created_at)
 
-    @debug = scrape_all
+    # @debug = scrape_all
     # @debug = scrape 'http://workingnews.blog117.fc2.com/?xml'
     
+    # @spreadsheet = GoogleSpreadsheets::Enhanced::Spreadsheet.find('0ArhV7gTgs6Z8dHlSRUF2SzFXWjlkU1V2d29KR2pkdXc')
+    # @worksheet = @spreadsheet.worksheets.find_by(title: 'site_rows')
+    # @rows = @worksheet.rows
+    # @site_rows = Site.site_rows
+    
+    # 同期実行
+    # Site.sync_with_site_rows
+
+    # スクレイピング
+    # ApplicationController.helpers.scrape_update
+    # ApplicationController.helpers.scrape "http://alfalfalfa.com/index.rdf"
+
     respond_to do |format|
       format.html { render :html => @sites }
       format.json { render :json => @sites.as_json }
