@@ -21,7 +21,7 @@ class SitesController < ApplicationController
     # @site_rows = Site.site_rows
     
     # 同期実行
-    Site.sync_with_site_rows
+    # Site.sync_with_site_rows
 
     # スクレイピング
     ApplicationController.helpers.scrape_update

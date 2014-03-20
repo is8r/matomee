@@ -10,23 +10,27 @@ module ApplicationHelper
     }
   end
   def scrape (uri)
-    page = URI.parse(uri).read
-    doc = Nokogiri::XML(open(uri))
-
     re = ''
-    doc.search('item').each do |i|
-      # new
-      post = Post.new
-      post.title = i.search('title').text
-      post.url = i.search('link').text
-      post.description = i.search('description').text
-      post.posted_at = Time.parse(i.xpath('dc:date').text)
-      post.site_id = get_site_id_rss(uri)
+    # URI.parse(uri).readが無いとエラーになるみたいなのでtry,catch
+    begin
+      page = URI.parse(uri).read
+      doc = Nokogiri::XML(open(uri))
 
-      # save
-      add_db_create_or_update(post)
+      doc.search('item').each do |i|
+        # new
+        post = Post.new
+        post.title = i.search('title').text
+        post.url = i.search('link').text
+        post.description = i.search('description').text
+        post.posted_at = Time.parse(i.xpath('dc:date').text)
+        post.site_id = get_site_id_rss(uri)
 
-      # re = post
+        # save
+        add_db_create_or_update(post)
+
+        # re = post
+      end
+    rescue => ex
     end
 
     re
