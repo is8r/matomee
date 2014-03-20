@@ -15,7 +15,13 @@ class SitesController < ApplicationController
     # @debug = scrape_all
     # @debug = scrape 'http://workingnews.blog117.fc2.com/?xml'
     
-    spreadsheet = GoogleSpreadsheets::Enhanced::Spreadsheet.find('0ArhV7gTgs6Z8dHlSRUF2SzFXWjlkU1V2d29KR2pkdXc')
+    # @spreadsheet = GoogleSpreadsheets::Enhanced::Spreadsheet.find('0ArhV7gTgs6Z8dHlSRUF2SzFXWjlkU1V2d29KR2pkdXc')
+    # @worksheet = @spreadsheet.worksheets.find_by(title: 'site_rows')
+    # @rows = @worksheet.rows
+    # @site_rows = Site.site_rows
+    
+    # 同期実行
+    Site.sync_with_site_rows
 
     respond_to do |format|
       format.html { render :html => @sites }
