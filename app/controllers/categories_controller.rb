@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
     @categories = Category.all
 
     # 同期実行
-    Category.sync_with_category_rows
+    # Category.sync_with_category_rows
 
   end
 

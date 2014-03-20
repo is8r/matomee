@@ -24,7 +24,8 @@ class SitesController < ApplicationController
     # Site.sync_with_site_rows
 
     # スクレイピング
-    ApplicationController.helpers.scrape_update
+    # ApplicationController.helpers.scrape_update
+    # ApplicationController.helpers.scrape "http://alfalfalfa.com/index.rdf"
 
     respond_to do |format|
       format.html { render :html => @sites }

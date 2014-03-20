@@ -5,7 +5,7 @@ module ApplicationHelper
   # --------------------------------------------------
   # スケジューラーから実行
   def scrape_update
-    Parallel.each(Site.all, in_threads: 1) {|i|
+    Parallel.each(Site.all, in_threads: 2) {|i|
       scrape i.rss
     }
   end
