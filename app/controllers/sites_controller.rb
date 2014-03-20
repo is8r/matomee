@@ -12,9 +12,11 @@ class SitesController < ApplicationController
   def index
     @sites = Site.all.order(:created_at)
 
-    @debug = scrape_all
+    # @debug = scrape_all
     # @debug = scrape 'http://workingnews.blog117.fc2.com/?xml'
     
+    spreadsheet = GoogleSpreadsheets::Enhanced::Spreadsheet.find('0ArhV7gTgs6Z8dHlSRUF2SzFXWjlkU1V2d29KR2pkdXc')
+
     respond_to do |format|
       format.html { render :html => @sites }
       format.json { render :json => @sites.as_json }
