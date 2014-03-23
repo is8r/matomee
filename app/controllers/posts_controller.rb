@@ -61,7 +61,9 @@ class PostsController < ApplicationController
     @posts_json.push posts
 
     respond_with(@posts) do |format|
-      format.html { render :html => @post }
+      if Rails.env.development?
+        format.html { render :html => @post }
+      end
       format.json { render :json => @posts_json.as_json }
     end
   end

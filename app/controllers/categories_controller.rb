@@ -8,7 +8,11 @@ class CategoriesController < ApplicationController
 
     # 同期実行
     # Category.sync_with_category_rows
-
+    respond_to do |format|
+      if Rails.env.development?
+        format.html { render :html => @categories }
+      end
+    end
   end
 
   # GET /categories/1

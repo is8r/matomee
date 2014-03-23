@@ -7,6 +7,12 @@ class ClicksController < ApplicationController
   # GET /clicks.json
   def index
     @clicks = Click.all
+
+    respond_to do |format|
+      if Rails.env.development?
+        format.html { render :html => @clicks }
+      end
+    end
   end
 
   # GET /clicks/1

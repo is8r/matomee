@@ -28,7 +28,9 @@ class SitesController < ApplicationController
     # ApplicationController.helpers.scrape "http://alfalfalfa.com/index.rdf"
 
     respond_to do |format|
-      format.html { render :html => @sites }
+      if Rails.env.development?
+        format.html { render :html => @sites }
+      end
       format.json { render :json => @sites.as_json }
     end
   end
